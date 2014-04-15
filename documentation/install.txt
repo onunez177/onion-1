@@ -1,0 +1,61 @@
+Usage and installation instructions
+-----------------------------------
+Prerequsites:
+Apache web server, PHP, MySQL
+
+Installation:
+1) Download Apache LOG4PHP (2.3.0) and extract it to lib folder
+2) Download Smarty (3.1.18) and extract it to lib folder
+3) Configure Onion:
+3.1) Open app/Configs folder and configure log file path in dailyfile.properties
+     log4php.appender.default.file = <path-to-log-with-filename.log>
+3.2) Open app/Configs folder and configure database parameters in database.php
+     host - Your database address
+     user - User that accesses database (needs to have grants to schema)
+     pass - Users password
+     schema - Database schema that holds the tables for webpage
+3.3) Open app/Configs folder and configure webroot parameter in paths.php
+     WEBROOT - set it to be the URL that webapp will be accessed (with preceding
+     forward slash, no slash in the end)
+4) Set permissions to read-write on the following directories:
+   - log/ (this is the folder You configured under pt. 3.1)
+   - tmpl/templates_c/
+   - tmpl/cache/
+   - tmpl/config/
+   
+Usage:
+For sample application run scripts from database/ on Your database server. This
+creates a sample project database. Do all the steps listed in previous paragraph
+and open the sample project in Your browser. The sample functionality can be
+found in app/*/Sample.php files. Main tiers in Onion are: 
+ - Views: populate Smarty variables and present the page
+ - Services: Entity-specific DAO classes for reading and writing to database
+ - Forms: Glue class between HTML form and entity 
+ - Misc: General functions that do not go anywhere specific
+ - Entities: VO or DTO objects. These classes represent database tables
+ - Enum: Constants used throughout the code
+
+To add Your own object to Onion..
+1) You'll need to create a database table that holds the object
+2) Create new class in Entities package, that has the same name as the table
+   created in pt.1. This class has attributes that represent the fields in the
+   table (see the Sample.php in Entities folder). Also getters and setters need
+   to be generated. Lastly, add getClassName() method from Sample.php to Your
+   own class! It is important that Your new class extends \Entities\ORM and 
+   implements \Interfaces\Transactional classes!
+3) If You like, You can add a entity specific service class but this is not 
+   mandatory! (again, see the Sample.php in Services folder) Service classes
+   need to extend \Service\ORM class.
+4) Next, You'll need to create a view class for Your object, so it could be
+   displayed to the user. To do this, create a new class in Views package that
+   extends \Views\Page class. In this class You have to implement _setService() 
+   and defaultView() methods. For reference, see \Views\Sample class
+5) Lastly, generate a object-specific HTML and store it to tmpl/templates/ folder.
+   Remember the name You gave to this file, and reopen \Views\<Your class> and
+   set the _content variables value to $this->_smarty->fetch('your-tpl.tpl');
+6) Now make Your object accessible from browser, by adding a new condition to
+   /index.php (again, see previous examples in the file)
+
+HTML templates reside in tmpl/templates/ folder. 
+
+Translations can be found in i18n/ folder.
