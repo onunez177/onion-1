@@ -95,6 +95,7 @@ class Form {
 		$props = $object->getProps();
 		$fields = array_keys($props);
 		foreach($fields as $field) {
+			$key = substr($field, 1);
 			$getter = "get" . ucfirst($key);
 			$out[$key] = \Misc\Tools::prepareOutput($object->$getter());
 		}
