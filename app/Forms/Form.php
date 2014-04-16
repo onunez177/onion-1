@@ -2,8 +2,17 @@
 namespace Forms;
 /**
  * File holds class for translating HTML POST array to object and vice versa.
- * This is an abstract class to extend by all elements that have a HTML input
- * output form.
+ * 
+ * To transfer data from entity to form, You need to create new Form object
+ * with entity that You want to send to the form. Then execute objectToForm()
+ * method and use the resulting key->value array in Your template
+ * 
+ * To transfer HTML form to entity, initialize Form with desired entity that
+ * will be populated by the class and then call formToObject($_POST) method
+ * 
+ * If you want to use empty values in your form (e.g. add and edit pages both
+ * use same base template) then use init() method. This creates empty array
+ * based on entity fields
  *
  * PHP version 5.3.5
  *
@@ -14,22 +23,22 @@ namespace Forms;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
  * @link       -
  */
-abstract class Form {
+class Form {
 	/**
 	 * Log4PHP object
 	 * @var \Logger
 	 */
-	protected $_logger;
+	private $_logger;
 	
 	/**
-	 * This object is entity specific and is populated with setObject method
+	 * This object is entity specific. Initialized on instance creation
 	 * @var \Entities\*
 	 */
-	protected $_object;
+	private $_object;
 	
-	public function __construct() {
+	public function __construct($object) {
 		$this->_logger = \Misc\Tools::initLogger();
-		$this->setObject();
+		$this->_object = $object;
 	}
 	
 	/**
@@ -41,18 +50,15 @@ abstract class Form {
 	}
 	
 	/**
-	 * Method to set entity specific object
-	 */
-	abstract function setObject();
-	
-	/**
 	 * Method transforms HTML POST elements into specific object. Form object
 	 * names must be the same as entity attribute names.
 	 * @param var[] $form HTML POST array
 	 * @return \Entities\* Specific entity object
 	 */
 	public function formToObject($form) {
-		$this->_logger->debug("Transforming HTML form to " . $this->_object->getClassName() . " object");
+		$this->_logger->debug(
+			"HTML form to " . $this->_object->getClassName() . " object"
+		);
 		$obj = clone $this->_object;
 		//read class attributes
 		$props = $this->_object->getProps();
@@ -64,11 +70,13 @@ abstract class Form {
 			$key = substr($field, 1);
 			//check if theres a field in HTML POST
 			if (in_array($key, array_keys($form))) {
-				$setter = "set".ucfirst($key);
+				$setter = "set" . ucfirst($key);
 				//populate object
 				$obj->$setter(\Misc\Tools::cleanInput($form[$key]));
 			} else {
-				$this->_logger->warn("HTML form had no element with key: " . $key);
+				$this->_logger->warn(
+					"HTML form had no element with key: " . $key
+				);
 			}
 		}
 		return $obj;
@@ -80,7 +88,9 @@ abstract class Form {
 	 * @return var[] key => value array derived from $object
 	 */
 	public function objectToForm($object) {
-		$this->_logger->debug("Transforming object " . $object->getClassName() . " to HTML form");
+		$this->_logger->debug(
+			"Object " . $object->getClassName() . " to HTML form"
+		);
 		$out = array();
 		$props = $object->getProps();
 		$fields = array_keys($props);
