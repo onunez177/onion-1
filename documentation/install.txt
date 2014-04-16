@@ -45,14 +45,15 @@ To add Your own object to Onion..
    implements \Interfaces\Transactional classes!
 3) If You like, You can add a entity specific service class but this is not 
    mandatory! (again, see the Sample.php in Services folder) Service classes
-   need to extend \Service\ORM class.
+   need to extend \Services\ORM class. If You do not create Your own service
+   class, You can read and write to database via \Services\ORM class
 4) Next, You'll need to create a view class for Your object, so it could be
    displayed to the user. To do this, create a new class in Views package that
    extends \Views\Page class. In this class You have to implement _setService() 
    and defaultView() methods. For reference, see \Views\Sample class
 5) Lastly, generate a object-specific HTML and store it to tmpl/templates/ folder.
    Remember the name You gave to this file, and reopen \Views\<Your class> and
-   set the _content variables value to $this->_smarty->fetch('your-tpl.tpl');
+   set the _content variable value to $this->_smarty->fetch('your-tpl.tpl');
 6) Now make Your object accessible from browser, by adding a new condition to
    /index.php (again, see previous examples in the file)
 
