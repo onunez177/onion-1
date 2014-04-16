@@ -44,12 +44,12 @@ class ORM {
 				//remove preceding underscore from attribute name
 				$key = substr($prop, 1);
 				$dbKeys[] = "`$key`";
-				$getter = "get".ucfirst($key);
+				$getter = "get" . ucfirst($key);
 				//do not try to send '' as ID
 			    if ($object->$getter() === null) {
 			        $objValues[] = "null";
 			    } else {
-			        $objValues[] = "'".$object->$getter()."'";
+			        $objValues[] = "'" . $object->$getter() . "'";
 			    }
 			}
 		}
@@ -69,10 +69,13 @@ class ORM {
 	 * Method updates object by ID. All fields are updated
 	 * @param Object $object
 	 * @return boolean true on success, false on error
-	 * @throws \Exception When problem occurred while updating or object does not have an ID
+	 * @throws \Exception When problem occurred while updating or object does 
+	 * not have an ID
 	 */
 	public function update($object) {
-		$this->_logger->debug('Updating ' . $object->getClassName() . ', ID: ' . $object->getId());
+		$this->_logger->debug(
+			'Updating ' . $object->getClassName() . ', ID: ' . $object->getId()
+		);
 		$retval = false;
 		if ($object->getId() > 0) {
     		$sql = 'UPDATE `%s` SET %s WHERE `id` = %d';
@@ -116,7 +119,11 @@ class ORM {
 	 * @return array Array of objects, false when nothing found
 	 * @throws \Exception When problem selecting object
 	 */
-	public function selectMulti($object, $orderField = false, $orderDirection = false) {
+	public function selectMulti(
+		$object, 
+		$orderField = false, 
+		$orderDirection = false
+	) {
 		$this->_logger->debug('Selecting ' . $object->getClassName());
 		$sql = 'SELECT * FROM `%s` WHERE %s';
 		//add ordering when nessessary
@@ -137,24 +144,34 @@ class ORM {
 	}
 	
 	/**
+	 * Method for selecting all $object from database (orderd descending by ID)
+	 * @param \Entities\* $object Object to select
+	 * @return array Array of objects, false when nothing found
+	 */
+	public function getAll($object) {
+		return $this->selectMulti($object, 'id', \Enum\Order::Desc);
+	}
+	
+	/**
 	 * Method executes a prepared sql, no matter what it is creates an array
 	 * of objects with the result
 	 * @param var $preparedSql SQL statement
 	 * @param Object $object Object type to use, clone
-	 * @return array Array of $object found from database (select), true on update/delete
+	 * @return array Array of $object found from database (select), true on 
+	 * update/delete
 	 * @throws \Exception
 	 */
 	public function rawQuery($preparedSql, $object) {
 		$this->_logger->debug('Executing SQL: ' . $preparedSql);
-		$link = \Services\Database::singleton()->getConnection();
+		$db = \Services\Database::singleton()->getConnection();
 		$out = false;
-		if ($retval = @mysql_query($preparedSql, $link)) {
+		if ($retval = @mysql_query($preparedSql, $db)) {
 		    //continue if this is a select command
 		    if (is_resource($retval)) {
     			while ($resultset = mysql_fetch_assoc($retval)) {
     				$o = clone $object;
     				foreach (array_keys($resultset) as $key) {
-    					$setter = "set".ucfirst($key);
+    					$setter = "set" . ucfirst($key);
     					$o->$setter($resultset[$key]);
     				}
     				$out[] = $o;
@@ -163,15 +180,20 @@ class ORM {
 		    } else if ($retval) {
 		    	//handle inserts
 		    	if (substr($preparedSql, 0, 6) == 'INSERT') {
-		    		$out = mysql_insert_id($link);
+		    		$out = mysql_insert_id($db);
 		    	} else {
 		        	$out = true;
 		    	}
 		    }
 		} else {
-		    $this->_logger->error('Unable to query object! ' . @mysql_error($link));
+		    $this->_logger->error('Can\'t query object! ' . @mysql_error($db));
 		    $this->_logger->debug("Failed SQL: " . $preparedSql);
-		    throw new \Exception('Unable to query object! ' . @mysql_error($link));
+		    throw new \Exception('Can\'t query object! ' . @mysql_error($db));
+		}
+		if ($out) {
+			$this->_logger->debug("Query successful! Found matches");
+		} else {
+			$this->_logger->debug("Query successful! No matches found");
 		}
 		return $out;
 	}
@@ -219,9 +241,9 @@ class ORM {
 		foreach (array_keys($props) as $prop) {
 			if (!in_array($prop, $this->_getExcludes())) {
 				$key = substr($prop, 1);
-				$getter = "get".ucfirst($key);
+				$getter = "get" . ucfirst($key);
 				if ($object->$getter() != null) {
-					$keyValues[] = "`$key` = '".$object->$getter()."'";
+					$keyValues[] = "`$key` = '" . $object->$getter() . "'";
 				}
 			}
 		}
