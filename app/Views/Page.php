@@ -128,7 +128,8 @@ abstract class Page {
 		}
 		
 		if ($this->_messages != null || $valueSet) {
-			array_push($this->_messages, $message);
+			if ($message)
+				array_push($this->_messages, $message);
 		} else {
 			$this->_messages = false;
 		}
