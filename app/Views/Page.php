@@ -105,10 +105,16 @@ abstract class Page {
 	 * @param bool $reset Flag, whether to reset previous messages
 	 */
 	public function setMessage($message, $reset = false) {
-		if ($reset || $this->_messages == false) {
+		$valueSet = false;
+		if (($reset || $this->_messages == false) && $message != false) {
 			$this->_messages = array();
+			$valueSet = true;
 		}
-		array_push($this->_messages, $message);
+		if ($this->_messages != null || $valueSet) {
+			array_push($this->_messages, $message);
+		} else {
+			$this->_messages = false;
+		}
 	}
 	
 	/**
