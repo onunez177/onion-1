@@ -1,7 +1,7 @@
 <?php
 namespace Views;
 /**
- * File holds class for Page object. It has general methods useful for all pages. 
+ * File holds class for Page object. It has general methods useful for all pages
  * Here menus and translations are loaded, messages are stored and general 
  * view is put together. 
  * 
@@ -43,14 +43,30 @@ abstract class Page {
 	 * @var var
 	 */
 	protected $_content;
+
+	/**
+	 * Service object associated with this view. Scope is private to overload
+	 * parent class service object. Must be set in _setService() method, since
+	 * it is abstract and called in parent class setUp() method
+	 * @var \Services\*
+	 */
+	protected $_service;
+	
+	/**
+	 * Entity object associated with this view. Must be set in _setEntity()
+	 * method, since it is abstract and called in parent class setUp() method
+	 * @var \Entity\*
+	 */
+	protected $_entity;
 	
 	/**
 	 * Constructor for standalone pages. Constructor initializes _setUp() and 
-	 * _setService() methods 
+	 * _setService(), _setEntity() methods 
 	 */
 	public function __construct() {
 	    $this->_setUp();
 	    $this->_setService();
+	    $this->_setEntity();
 	}
 	
 	/**
@@ -118,10 +134,45 @@ abstract class Page {
 		}
 	}
 	
+
+	/**
+	 * Method for storing user input from HTML form. After insert, user is
+	 * returned to defaultView() with appropriate message about insertion
+	 * @param var[] $post HTTP POST
+	 */
+	public function addAction($post) {
+		$form = new \Forms\Form($this->_entity);
+		$obj = $form->formToObject($post);
+		try {
+			if ($id = $this->_service->insert($obj)) {
+				$message = new \Entities\Message(
+					\Enum\MessageType::Success, 
+					$this->_translation['insertSuccess']
+				);
+			} else {
+				$message = new \Entities\Message(
+					\Enum\MessageType::Warning, 
+					$this->_translation['insertFail']
+				);
+			}
+		} catch (\Exception $e) {
+			$message = new \Entities\Message(
+				\Enum\MessageType::Error, 
+				$this->_translation['internalError']
+			);
+		}
+		$this->defaultView($message);
+	}
+	
 	/**
 	 * Method for setting page specific service
 	 */
 	abstract protected function _setService();
+	
+	/**
+	 * Method for setting page specific entity
+	 */
+	abstract protected function _setEntity();
 	
 	/**
 	 * Method for basic view (set content, messages etc) 

@@ -15,21 +15,20 @@ namespace Views;
  * @link       -
  */
 class Sample extends Page {
-	
-    /**
-     * Service object associated with this view. Scope is private to overload
-     * parent class service object. Must be set in _setService() method, since
-     * it is abstract and called in parent class setUp() method
-     * @var \Services\Sample
-     */
-	private $_service;
-	
 	/**
 	 * Initialize view specific service for other methods
 	 * @see \Views\Page::_setService()
 	 */
 	protected function _setService() {
 		$this->_service = new \Services\Sample();
+	}
+
+	/**
+	 * Initialize view specific entity for other methods
+	 * @see \Views\Page::_setEntity()
+	 */
+	protected function _setEntity() {
+		$this->_entity = new \Entities\Sample();
 	}
 	
 	/**
@@ -53,29 +52,9 @@ class Sample extends Page {
 	 * @param \Entities\Message $message Message to display
 	 */
 	public function addView($message = false) {
-		$form = new \Forms\Sample();
+		$form = new \Forms\Form(new \Entities\Sample());
 		$this->_smarty->assign('form', $form->init());
 		$this->_content = $this->_smarty->fetch('sampleAdd.tpl');
 		$this->display($message);
-	}
-	
-	/**
-	 * Method for storing user input from HTML form. After insert, user is 
-	 * returned to defaultView() with appropriate message about insertion
-	 * @param var[] $post HTTP POST
-	 */
-	public function addAction($post) {
-		$form = new \Forms\Sample();
-		$obj = $form->formToObject($post);
-		try {
-			if ($id = $this->_service->insert($obj)) {
-				$this->defaultView(new \Entities\Message(\Enum\MessageType::Success, "Successfully inserted: " . $id));
-			} else {
-				$this->defaultView(new \Entities\Message(\Enum\MessageType::Warning, "Insert failed"));
-			}
-			
-		} catch (\Exception $e) {
-			$this->defaultView(new \Entities\Message(\Enum\MessageType::Error, "Cant insert!"));
-		}
 	}
 }
