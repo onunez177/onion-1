@@ -110,6 +110,7 @@ abstract class Page {
 			$this->_messages = array();
 			$valueSet = true;
 		}
+		
 		if ($this->_messages != null || $valueSet) {
 			array_push($this->_messages, $message);
 		} else {
