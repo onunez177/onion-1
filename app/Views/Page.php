@@ -45,9 +45,8 @@ abstract class Page {
 	protected $_content;
 
 	/**
-	 * Service object associated with this view. Scope is private to overload
-	 * parent class service object. Must be set in _setService() method, since
-	 * it is abstract and called in parent class setUp() method
+	 * Service object associated with this view. Must be set in _setService() 
+	 * method, since it is abstract and called in parent class setUp() method
 	 * @var \Services\*
 	 */
 	protected $_service;
@@ -55,7 +54,7 @@ abstract class Page {
 	/**
 	 * Entity object associated with this view. Must be set in _setEntity()
 	 * method, since it is abstract and called in parent class setUp() method
-	 * @var \Entity\*
+	 * @var \Entities\*
 	 */
 	protected $_entity;
 	
