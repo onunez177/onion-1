@@ -116,7 +116,7 @@ abstract class Page {
 	
 	/**
 	 * Method allows passing messages to another page views
-	 * @param array $message Message to pass
+	 * @param \Entities\Message $message Message to pass
 	 * @param bool $reset Flag, whether to reset previous messages
 	 */
 	public function setMessage($message, $reset = false) {
@@ -163,6 +163,22 @@ abstract class Page {
 		}
 		$this->defaultView($message);
 	}
+	
+	/**
+	 * Method reads all entities from database and presents them in 
+	 * <Entity>List.tpl template
+	 * @param string $message
+	 */
+	public function listView($message = false) {
+		$entities = $this->_service->getAll($this->_entity);
+		$this->_smarty->assign('entities', $entities);
+		$classname = $this->_entity->getClassName();
+		$names = explode('\\', $classname);
+		$prequal = ucfirst($names[1]);
+		$this->_content = $this->_smarty->fetch($prequal . 'List.tpl');
+		$this->setMessage($message);
+		$this->display();
+	} 
 	
 	/**
 	 * Method for setting page specific service
