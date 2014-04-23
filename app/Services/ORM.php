@@ -174,7 +174,7 @@ class ORM {
     					$setter = "set" . ucfirst($key);
     					$o->$setter($resultset[$key]);
     				}
-    				$out[] = $o;
+    				$out[$o->getId()] = $o;
     			}
 			//this is for update or delete
 		    } else if ($retval) {
