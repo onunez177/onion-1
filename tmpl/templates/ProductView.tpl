@@ -7,7 +7,7 @@
 	{if $form.year gt 0}
 	   <tr><th>{$lang['year']}</th><td>{$form.year}</td></tr>
 	{/if}
-	<tr><th>{$lang['alc']}</th><td>{$form.alc} %</td></tr>
+	<tr><th>{$lang['alc']}</th><td>{$form.alc|string_format:"%.1f"} %</td></tr>
 	<tr><th>{$lang['origin']}</th><td>{$form.origin}</td></tr>
 	<tr colspan="2"><td><a href="{$smarty.const.WEBROOT}/review/add">{$lang['addReview']}</a></td></tr>
 </table>

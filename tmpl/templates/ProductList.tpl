@@ -7,6 +7,7 @@
                 <th>{$lang['manufactor']}</th>
                 <th>{$lang['type']}</th>
                 <th>{$lang['subtype']}</th>
+                <th>{$lang['alc']}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
                     <td>{$product->getManufactor()}</td>
                     <td>{$lang[$typeName]}</td>
                     <td>{$lang[$subTypeName]}</td>
+                    <td>{$product->getAlc()|string_format:"%.1f"}</td>
                 </tr>
             {/foreach}
         </tbody>

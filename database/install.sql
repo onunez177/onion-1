@@ -18,7 +18,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `onion`.`subtype`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onion`.`subtype` (
+CREATE TABLE IF NOT EXISTS `onion`.`subType` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `typeId` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL DEFAULT '',
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `onion`.`product` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_subtype`
     FOREIGN KEY (`subTypeId`)
-    REFERENCES `onion`.`subtype` (`id`)
+    REFERENCES `onion`.`subType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -85,3 +85,13 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `onion`.`type` (id, name)  VALUES (null, 'beer');
+INSERT INTO `onion`.`type` (id, name)  VALUES (null, 'wine');
+
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 1, 'lager');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 1, 'porter');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'red');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'white');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'rose');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 1, 'ale');

@@ -34,8 +34,8 @@ $lang = array (
     'addReview' => 'Add review',
 	
 	'product' => 'Product',
-	'color' => 'Color',
-	'smell' => 'Smell',
+	'color' => 'Appearance',
+	'smell' => 'Aroma',
 	'taste' => 'Taste',
 	'description' => 'Description',
 	'rating' => 'Rating',
@@ -49,6 +49,12 @@ $lang = array (
 	'white' => 'White',
 	'red' => 'Red',
 	'rose' => 'Rosé',
+	'ale' => 'Ale',
+	'mead' => 'Mead',
+	'softdrink' => 'Soft drink',
+	'soda' => 'Soda',
+	'rootbeer' => 'Root beer',
+	
 		
 	'insertSuccess' => 'Insertion successful',
 	'insertFail' => 'Insert failed for some reason',
