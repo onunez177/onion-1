@@ -58,7 +58,7 @@ class Sample extends Page implements \Interfaces\Presentable {
 		$this->display($message);
 	}
 	
-	public function singleView($id, $message = false) {
+	public function detailsView($id, $message = false) {
 		
 	}
 	

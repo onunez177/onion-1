@@ -8,8 +8,8 @@
  * @var array
  */
 $db = array(
-	'host' => '',
-	'user' => '',
+	'host' => 'localhost',
+	'user' => 'root',
 	'pass' => '',		
-	'schema' => ''		
+	'schema' => 'onion'		
 );

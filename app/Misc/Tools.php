@@ -88,4 +88,8 @@ class Tools {
 	public static function prepareOutput($str) {
 		return stripslashes($str);
 	}
+	
+	public static function getValidView($object) {
+		return 'Views\\'.ucfirst($object);
+	}
 }

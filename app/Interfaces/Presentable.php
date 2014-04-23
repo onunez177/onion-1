@@ -21,11 +21,11 @@ interface Presentable {
 	 */
 	public function listView($message = false);
 	/**
-	 * View that shows single entity by ID
+	 * View that shows details of entity by ID
 	 * @param int $id ID of the entity to show
 	 * @param \Entities\Message $message Message object, when necessary
 	 */
-	public function singleView($id, $message = false);
+	public function detailsView($id, $message = false);
 	/**
 	 * View that is shown by default. This is a proxy method.
 	 * @param \Entities\Message $message Message object, when necessary

@@ -8,7 +8,7 @@
  * Path for web items such as css and images
  * @var var
  */
-define('WEBROOT', '/onionFramework');
+define('WEBROOT', '/onion');
 
 /**
  * Define root path
