@@ -14,7 +14,7 @@ namespace Views;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
  * @link       -
  */
-class Sample extends Page {
+class Sample extends Page implements \Interfaces\Presentable {
 	/**
 	 * Initialize view specific service for other methods
 	 * @see \Views\Page::_setService()
@@ -56,5 +56,13 @@ class Sample extends Page {
 		$this->_smarty->assign('form', $form->init());
 		$this->_content = $this->_smarty->fetch('sampleAdd.tpl');
 		$this->display($message);
+	}
+	
+	public function singleView($id, $message = false) {
+		
+	}
+	
+	public function listView($message = false) {
+		
 	}
 }
