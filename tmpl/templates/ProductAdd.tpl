@@ -2,15 +2,15 @@
 <form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd">
 	<table>
 		<tr><th>{$lang['type']}</th><td>
-		  <select name="typeId">
+		  <select name="typeId" onchange="updateSubTypes(this)" id="types">
 		      {foreach from=$types item=type}
 		      <option value="{$type->getId()}">{$lang[$type->getName()]}</option>
 		      {/foreach}
 	      </select>
 		</td></tr>
 		<tr><th>{$lang['subtype']}</th><td>
-		  <select name="subTypeId">
-    		  {foreach from=$subtypes item=subtype}
+		  <select name="subTypeId" id="subtypes">
+    		  {foreach from=$typeSubtypes item=subtype}
 		      <option value="{$subtype->getId()}">{$lang[$subtype->getName()]}</option>
 		      {/foreach}
 		  </select>
