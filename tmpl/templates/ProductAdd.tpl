@@ -1,5 +1,5 @@
 <h1 class="h-text-1" style="text-transform: uppercase;">{$lang['newproduct']}</h1>
-<form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd">
+<form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd" enctype="multipart/form-data">
 	<table>
 		<tr><th>{$lang['type']}</th><td>
 		  <select name="typeId" onchange="updateSubTypes(this)" id="types">
@@ -20,6 +20,7 @@
 		<tr><th>{$lang['year']}</th><td><input name="year" type="text"/></td></tr>
 		<tr><th>{$lang['alc']}</th><td><input name="alc" type="text"/></td></tr>
 		<tr><th>{$lang['origin']}</th><td><input name="origin" type="text"/></td></tr>
+		<tr><th>{$lang['picture']}</th><td><input type="file" accept="image/png" id="picture" name="picture"/></td></tr>
 		<tr colspan="2"><td><a href="#">{$lang['cancel']}</a> | <input type="submit" value="{$lang['save']}"></td></tr>
 	</table>
 

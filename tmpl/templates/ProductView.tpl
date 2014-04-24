@@ -1,31 +1,40 @@
 <h1 class="h-text-1" style="text-transform: uppercase;">{$lang['products']}</h1>
-<h2 class="h-text-2">{$form.manufactor} {$form.name}</h2>
-<div id="rating"></div>
-<table>
-	<tr><th>{$lang['type']}</th><td>{$form.typeId}</td></tr>
-	<tr><th>{$lang['subtype']}</th><td>{$form.subTypeId}</td></tr>
-	{if $form.year gt 0}
-	   <tr><th>{$lang['year']}</th><td>{$form.year}</td></tr>
-	{/if}
-	<tr><th>{$lang['alc']}</th><td>{$form.alc|string_format:"%.1f"} %</td></tr>
-	<tr><th>{$lang['origin']}</th><td>{$form.origin}</td></tr>
-	<tr colspan="2"><td><a href="{$smarty.const.WEBROOT}/review/add">{$lang['addReview']}</a></td></tr>
+<table cellspacing="15">
+	<tr><td>
+	<div class="yoxview" id="thumbnails">
+	    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75px" height="150px" alt="{$form.name}" title="{$form.name}" /></a>
+	</div>
+	</td><td>
+	<h2 class="h-text-2">{$form.manufactor} {$form.name}</h2>
+	<div id="rating"></div>
+	<table>
+		<tr><th>{$lang['type']}</th><td>{$form.typeId}</td></tr>
+		<tr><th>{$lang['subtype']}</th><td>{$form.subTypeId}</td></tr>
+		{if $form.year gt 0}
+		   <tr><th>{$lang['year']}</th><td>{$form.year}</td></tr>
+		{/if}
+		{if $form.alc gt 0}
+		<tr><th>{$lang['alc']}</th><td>{$form.alc|string_format:"%.1f"} %</td></tr>
+		{/if}
+		<tr><th>{$lang['origin']}</th><td>{$form.origin}</td></tr>
+		<tr colspan="2"><td><a href="{$smarty.const.WEBROOT}/review/add">{$lang['addReview']}</a></td></tr>
+	</table>
+	<script type="text/javascript">
+	var webroot = '{$smarty.const.WEBROOT}/lib/design/images/';
+	var score = '{$average|string_format:"%.1f"}';
+	{literal}
+	    $('#rating').raty({
+	      starOff : webroot + 'star-off.png',
+	      starOn  : webroot + 'star-on.png',
+	      starHalf : webroot + 'star-half.png',
+	      number : 10,
+	      readOnly: true, 
+	      score: score
+	    });
+	{/literal}
+	</script>
+	</td></tr>
 </table>
-<script type="text/javascript">
-var webroot = '{$smarty.const.WEBROOT}/lib/design/images/';
-var score = '{$average|string_format:"%.1f"}';
-{literal}
-    $('#rating').raty({
-      starOff : webroot + 'star-off.png',
-      starOn  : webroot + 'star-on.png',
-      starHalf : webroot + 'star-half.png',
-      number : 10,
-      readOnly: true, 
-      score: score
-    });
-{/literal}
-</script>
-
 <p class="border-1">&nbsp;</p>
 <h2 class="h-text-2">{$lang['productReviews']}</h2>
 {if $reviews}

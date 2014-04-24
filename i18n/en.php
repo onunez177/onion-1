@@ -41,6 +41,7 @@ $lang = array (
 	'rating' => 'Rating',
 	'notInList' => 'Product not in list?',
 	'latestReviews' => 'Latest Reviews',
+	'picture' => 'Image (PNG)',
 		
 	'beer' => 'Beer',
 	'wine' => 'Wine',

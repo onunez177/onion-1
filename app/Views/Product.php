@@ -14,6 +14,17 @@ namespace Views;
  */
 class Product extends Page implements \Interfaces\Presentable {
 	/**
+	 * Product image thumbnail width
+	 * @var int
+	 */
+	const IMG_X = 75;
+	/**
+	 * Product image thumbnail height
+	 * @var int
+	 */
+	const IMG_Y = 150;
+	
+	/**
 	 * Initialize view specific service for other methods
 	 * @see \Views\Page::_setService()
 	 */
@@ -100,9 +111,25 @@ class Product extends Page implements \Interfaces\Presentable {
 				//add reviews to product
 				$reviews = $this->_getProductReviews($id);
 				//add average to product
-				$this->_smarty->assign('average', $this->_calculateAverageScore($reviews));
+				$this->_smarty->assign(
+					'average', 
+					$this->_calculateAverageScore($reviews)
+				);
 				$this->_smarty->assign('reviews', $reviews);
 				$this->_smarty->assign('form', $array);
+				//FIXME: some special chars do not show pictures correctly
+				$imgName = urlencode(
+					$product->getManufactor()
+					. '_' . $product->getName() . '.png'
+				);
+				$this->_smarty->assign('encodedName', $imgName);
+				\Misc\Image::createCroppedThumbnail(
+					APPPATH . 'uploads/', 
+					$imgName, 
+					self::IMG_X, 
+					self::IMG_Y,
+					'thumb'
+				);
 				$this->_content = $this->_smarty->fetch('ProductView.tpl');
 			}
 		} else {
@@ -189,5 +216,16 @@ class Product extends Page implements \Interfaces\Presentable {
 		$type->setTypeId($typeId);
 		$t = $orm->selectMulti($type, 'id', \Enum\Order::Asc);
 		return $t;
+	}
+	
+	/**
+	 * Method to wrap parent class add action and add Image to server after 
+	 * product is added to database
+	 * @param unknown $post
+	 */
+	public function addAction($post) {
+		parent::addAction($post);
+		$filename = urlencode($post['manufactor'] . '_' . $post['name']);
+		\Misc\Image::uploadImage($_FILES, $filename);
 	}
 }

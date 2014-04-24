@@ -15,9 +15,9 @@
   
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery-1.11.0.min.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.dataTables-1.9.4.js"></script>
+  <script src="{$smarty.const.WEBROOT}/lib/design/js/yoxview-init.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/js.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.raty-2.5.2.min.js"></script>
-  
 </head>
 <body>
 <div id="container">
