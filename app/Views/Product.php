@@ -151,11 +151,16 @@ class Product extends Page implements \Interfaces\Presentable {
 	private function _calculateAverageScore($reviews) {
 		$score = 0;
 		$counter = 0;
-		foreach ($reviews as $review) {
-			$score += $review->getRating();
-			$counter++;
+		if($reviews != false && count($reviews) > 0) {
+			foreach ($reviews as $review) {
+				$score += $review->getRating();
+				$counter++;
+			}
+			$retval = $score / $counter; 
+		} else {
+			$retval = 0;
 		}
-		return $score / $counter;
+		return $retval;
 	}
 
 	/**
