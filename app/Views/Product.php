@@ -52,9 +52,12 @@ class Product extends Page implements \Interfaces\Presentable {
 		
 		$products = $this->_service->getAll($this->_entity);
 		$types = $orm->getAll(new \Entities\Type());
+		//read all subtypes for productList
 		$subTypes = $orm->getAll(new \Entities\SubType());
-		
 		$this->_smarty->assign('types', $types);
+		//get only the subtypes of first type
+		$typeSubTypes = $this->_getTypeSubTypes(array_shift($types)->getId());
+		$this->_smarty->assign('typeSubtypes', $typeSubTypes);
 		$this->_smarty->assign('subtypes', $subTypes);
 		$this->_smarty->assign('entities', $products);
 		$this->_content = $this->_smarty->fetch('ProductAdd.tpl');
@@ -139,6 +142,11 @@ class Product extends Page implements \Interfaces\Presentable {
 		parent::listView($message);
 	}
 	
+	/**
+	 * Method calculates the average score for given reviews
+	 * @param \Entities\Review[] $reviews
+	 * @return float 
+	 */
 	private function _calculateAverageScore($reviews) {
 		$score = 0;
 		$counter = 0;
@@ -147,5 +155,33 @@ class Product extends Page implements \Interfaces\Presentable {
 			$counter++;
 		}
 		return $score / $counter;
+	}
+
+	/**
+	 * Method outputs desired type subtypes as JSON
+	 * @param int $typeId
+	 * @return string
+	 */
+	public function getTypeSubTypesAsJson($typeId) {
+		$subtypes = $this->_getTypeSubTypes($typeId);
+		$out = array();
+		foreach ($subtypes as $subtype) {
+			//create key->val array with ID and translated name
+			$out[$subtype->getId()] = $this->_translation[$subtype->getName()];
+		}
+		return json_encode($out);
+	}
+
+	/**
+	 * Method retrieves type subtypes
+	 * @param int $typeId
+	 * @return Ambigous <multitype:, boolean, number, Object>
+	 */
+	private function _getTypeSubTypes($typeId) {
+		$orm = new \Services\ORM();
+		$type = new \Entities\SubType();
+		$type->setTypeId($typeId);
+		$t = $orm->selectMulti($type, 'id', \Enum\Order::Asc);
+		return $t;
 	}
 }
