@@ -1,22 +1,29 @@
-<h1 class="h-text-1" style="text-transform: uppercase;">{$lang['reviews']}</h1>
-<h2 class="h-text-2"><a href="{$smarty.const.WEBROOT}/product/details/{$form.productId}">{$form.product}</a> - {$form.user}</h2> 
+<header class="title clearfix">
+	<p class="fleft">{$lang['reviews']}</p>
+    <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">List of all reviews</a>
+</header>
 <div id="rating"></div>
-<p class="border-1">&nbsp;</p>
-<table style="width:100%">
-	<tr>
-	   <th width="30%">{$lang['color']}</th>
-	   <th width="30%">{$lang['smell']}</th>
-	   <th width="30%">{$lang['taste']}</th>
-    </tr>
-	<tr>
-	   <td>{$form.color}</td>
-	   <td>{$form.smell}</td>
-	   <td>{$form.taste}</td>
-    </tr>
-</table>
-<p class="border-1">&nbsp;</p>
-<h3 class="h-text-2">{$lang['description']}</h3>
-<p class="text-1">
+<h1 style="text-transform: uppercase;">{$form.product}</h1>
+
+<section class="part clearfix">
+<article class="column4in mright services">
+	<h5>{$lang['color']}</h5>
+	<div class="sepmini"></div>
+	<p>{$form.color}</p>
+</article>
+<article class="column4in mright services">
+	<h5>{$lang['smell']}</h5>
+	<div class="sepmini"></div>
+	<p>{$form.smell}</p>
+</article>
+<article class="column4in mright services">
+	<h5>{$lang['taste']}</h5>
+	<div class="sepmini"></div>
+	<p>{$form.taste}</p>
+</article>
+</section>
+<h5>{$lang['description']}</h3>
+<p>
     {$form.description}
 </p>
 <script type="text/javascript">

@@ -1,13 +1,17 @@
-<h1 class="h-text-1" style="text-transform: uppercase;">{$lang['products']}</h1>
+<header class="title clearfix">
+    <p class="fleft"></p>
+    <a href="{$smarty.const.WEBROOT}/product/fresh" class="arrow more fright">Freshest top 4</a> </header>
+
+    <h1 style="text-transform: uppercase;">{$lang['products']}</h1>
 <table id="contentTable">
     {if $entities}
         <thead>
             <tr>
-                <th>{$lang['name']}</th>
-                <th>{$lang['manufactor']}</th>
-                <th>{$lang['type']}</th>
-                <th>{$lang['subtype']}</th>
-                <th>{$lang['alc']}</th>
+                <th width="20%">{$lang['name']}</th>
+                <th width="20%">{$lang['manufactor']}</th>
+                <th width="20%">{$lang['type']}</th>
+                <th width="20%">{$lang['subtype']}</th>
+                <th width="20%">{$lang['alc']}</th>
             </tr>
         </thead>
         <tbody>

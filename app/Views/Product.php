@@ -115,13 +115,9 @@ class Product extends Page implements \Interfaces\Presentable {
 					'average', 
 					$this->_calculateAverageScore($reviews)
 				);
+				$imgName = $this->_getImgName($product);
 				$this->_smarty->assign('reviews', $reviews);
 				$this->_smarty->assign('form', $array);
-				//FIXME: some special chars do not show pictures correctly
-				$imgName = urlencode(
-					$product->getManufactor()
-					. '_' . $product->getName() . '.png'
-				);
 				$this->_smarty->assign('encodedName', $imgName);
 				\Misc\Image::createCroppedThumbnail(
 					APPPATH . 'uploads/', 
@@ -141,6 +137,14 @@ class Product extends Page implements \Interfaces\Presentable {
 		}
 		$this->setMessage($message);
 		$this->display();
+	}
+	
+	private function _getImgName($product) {
+		//FIXME: some special chars do not show pictures correctly
+		return urlencode(
+			$product->getManufactor()
+			. '_' . $product->getName() . '.png'
+		);
 	}
 	
 	/**
@@ -227,5 +231,23 @@ class Product extends Page implements \Interfaces\Presentable {
 		parent::addAction($post);
 		$filename = urlencode($post['manufactor'] . '_' . $post['name']);
 		\Misc\Image::uploadImage($_FILES, $filename);
+	}
+	
+	public function freshView() {
+		$orm = new \Services\ORM();
+		$t = $orm->getAll(new \Entities\Type());
+		$st = $orm->getAll(new \Entities\SubType());
+		$this->_smarty->assign('types', $t);
+		$this->_smarty->assign('subtypes', $st);
+		$entities = $this->_service->getAll($this->_entity);
+		$fresh = array_slice($entities, 0, 4);
+		$imgnames = array();
+		foreach ($fresh as $k => $itm) {
+			$imgnames[$itm->getId()] = $this->_getImgName($itm);
+		}
+		$this->_smarty->assign('fresh', $fresh);
+		$this->_smarty->assign('images', $imgnames);
+		$this->_content = $this->_smarty->fetch('ProductFreshTop.tpl');
+		$this->display();
 	}
 }

@@ -1,5 +1,10 @@
-<h1 class="h-text-1" style="text-transform: uppercase;">{$lang['newproduct']}</h1>
-<form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd" enctype="multipart/form-data">
+<header class="title clearfix">
+    <p class="fleft"></p>
+    <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">List of all products</a> </header>
+
+    <h1 style="text-transform: uppercase;">{$lang['newproduct']}</h1>
+
+<form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd" enctype="multipart/form-data" id="addProduct">
 	<table>
 		<tr><th>{$lang['type']}</th><td>
 		  <select name="typeId" onchange="updateSubTypes(this)" id="types">
@@ -21,7 +26,8 @@
 		<tr><th>{$lang['alc']}</th><td><input name="alc" type="text"/></td></tr>
 		<tr><th>{$lang['origin']}</th><td><input name="origin" type="text"/></td></tr>
 		<tr><th>{$lang['picture']}</th><td><input type="file" accept="image/png" id="picture" name="picture"/></td></tr>
-		<tr colspan="2"><td><a href="#">{$lang['cancel']}</a> | <input type="submit" value="{$lang['save']}"></td></tr>
+		<tr><td colspan="2"><a href="{$smarty.const.WEBROOT}/product/add" class="button">{$lang['cancel']}</a>
+		<a href="#" onclick="$('#addProduct').submit()" class="button">{$lang['save']}</a></td></tr>
 	</table>
 
 </form>

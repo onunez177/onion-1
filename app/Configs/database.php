@@ -10,6 +10,6 @@
 $db = array(
 	'host' => 'localhost',
 	'user' => 'root',
-	'pass' => '',		
+	'pass' => 'reddit',		
 	'schema' => 'onion'		
 );
