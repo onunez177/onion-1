@@ -8,10 +8,16 @@
   <link href="{$smarty.const.WEBROOT}/lib/design/css/style.css" rel="stylesheet" type="text/css">
   <link href="{$smarty.const.WEBROOT}/lib/design/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
   
+  <script type="text/javascript">
+    //make full server path available to javascript functions
+    var prefix = '{$smarty.const.WEBROOT}';
+  </script>
+  
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery-1.11.0.min.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.dataTables-1.9.4.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/js.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.raty-2.5.2.min.js"></script>
+  
 </head>
 <body>
 <div id="container">
