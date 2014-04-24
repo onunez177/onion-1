@@ -55,7 +55,8 @@ class Product extends Page implements \Interfaces\Presentable {
 		//read all subtypes for productList
 		$subTypes = $orm->getAll(new \Entities\SubType());
 		$this->_smarty->assign('types', $types);
-		//get only the subtypes of first type
+		//get only the subtypes of first type, do this after types array is
+		//assigned to smarty, because array_shift removes the first element 
 		$typeSubTypes = $this->_getTypeSubTypes(array_shift($types)->getId());
 		$this->_smarty->assign('typeSubtypes', $typeSubTypes);
 		$this->_smarty->assign('subtypes', $subTypes);
