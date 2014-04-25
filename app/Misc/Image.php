@@ -42,6 +42,9 @@ class Image {
 	 */
 	public static function createCroppedThumbnail($path, $image, $thumb_width, $thumb_height, $prefix) {
 		$image_path = $path . $image;
+		if (!file_exists($image_path)) {
+			$image_path = APPPATH . 'lib/design/images/noimage.jpg';
+		}
 		if (!(is_integer($thumb_width) && $thumb_width > 0) && !($thumb_width === "*")) {
 			echo "The width is invalid";
 			exit(1);
@@ -52,6 +55,8 @@ class Image {
 			exit(1);
 		}
 	
+		
+		
 		$extension = pathinfo($image_path, PATHINFO_EXTENSION);
 		switch ($extension) {
 			case "jpg":
