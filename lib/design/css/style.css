@@ -18,11 +18,11 @@ audio:not([controls]) { display: none; }
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 body { margin: 0; font-size: 12px; line-height: 1.5; }
 body, button, input, select, textarea { font-family: Arial, sans-serif; color: #666666; }
-::-moz-selection { background: #37DAC1; color: #fff; text-shadow: none; }
-::selection { background: #37DAC1; color: #fff; text-shadow: none; }	
+::-moz-selection { background: #DF7401; color: #fff; text-shadow: none; }
+::selection { background: #DF7401; color: #fff; text-shadow: none; }	
 /* LINKS */
-a { color: #37DAC1; cursor: pointer; }
-a:hover { color: #37DAC1; 
+a { color: #DF7401; cursor: pointer; }
+a:hover { color: #DF7401; 
 transition: color 0.2s linear;-moz-transition: color 0.2s linear;-webkit-transition: color 0.2s linear;-o-transition: color 0.2s linear;  } 
 a:visited { color: ;}
 *:hover, *:focus, *:active { outline: 0; outline: none; }
@@ -98,13 +98,13 @@ header#navtop { margin-bottom: 50px; background: url(../img/stripes.png) no-repe
 header nav { margin-top: 60px }
     header nav ul { float: left; overflow: hidden; padding: 0 30px 0 20px; border-left: 1px solid #ddd; line-height: 24px; }
 nav a, menu a { text-decoration: none; color: #666; }
-.navactive { color: #37DAC1 }
+.navactive { color: #DF7401 }
 /**/
 .part { margin-bottom: 80px }
 .title { border-top: 1px solid #999; padding-top: 10px; color: #555; margin-bottom: 30px; }
 /**/
 .arrow { padding-right: 15px; background: url(../img/arrow.png) no-repeat right center; text-decoration: none; }
-.arrow:hover { background: url(../img/arrowhover.png) no-repeat right center; color: #37DAC1; }
+.arrow:hover { background: url(../img/arrowhover.png) no-repeat right center; color: #DF7401; }
 .more { color: #999; font-style: italic; }
 /* SLIDER */
 #slides { position: relative; z-index: 1; }
