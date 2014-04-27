@@ -1,9 +1,9 @@
 <header class="title clearfix">
 	<p class="fleft">{$lang['reviews']}</p>
-    <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">List of all reviews</a>
+    <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">{$lang['allReviews']}</a>
 </header>
 <div id="rating"></div>
-<h1 style="text-transform: uppercase;">{$form.product}</h1>
+<h1 style="text-transform: uppercase;">{$form.manufactor} <a href="{$smarty.const.WEBROOT}/product/details/{$form.productId}">{$form.name}</a></h1>
 
 <section class="part clearfix">
 <article class="column4in mright services">
@@ -22,10 +22,14 @@
 	<p>{$form.taste}</p>
 </article>
 </section>
-<h5>{$lang['description']}</h3>
+<div class="yoxview" id="thumbnails" style="float:left;">
+    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75px" height="150px" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
+</div>
+<div style="float:left;width: 800px;padding-left: 10px;"><h5>{$lang['description']}</h3>
 <p>
     {$form.description}
-</p>
+</p></div>
+
 <script type="text/javascript">
 var webroot = '{$smarty.const.WEBROOT}/lib/design/images/';
 var score = '{$form.rating}';

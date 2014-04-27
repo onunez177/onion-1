@@ -1,6 +1,6 @@
 <header class="title clearfix">
     <p class="fleft"></p>
-    <a href="{$smarty.const.WEBROOT}/product/fresh" class="arrow more fright">Freshest top 4</a> </header>
+    <a href="{$smarty.const.WEBROOT}/product/fresh" class="arrow more fright">{$lang['topFresh']}</a> </header>
 
     <h1 style="text-transform: uppercase;">{$lang['products']}</h1>
 <table id="contentTable">
@@ -23,8 +23,8 @@
                 {* get the specific element, so translation can be fetched *}
                 {assign var=typeName value=$types[$typeId]->getName()}
                 {assign var=subTypeName value=$subtypes[$subTypeId]->getName()}
-                <tr>
-                    <td><a href="{$smarty.const.WEBROOT}/product/details/{$product->getId()}">{$product->getName()}</a></td>
+                <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/product/details/{$product->getId()}'">
+                    <td>{$product->getName()}</td>
                     <td>{$product->getManufactor()}</td>
                     <td>{$lang[$typeName]}</td>
                     <td>{$lang[$subTypeName]}</td>

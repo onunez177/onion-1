@@ -1,6 +1,6 @@
 <header class="title clearfix">
-    <p class="fleft"></p>
-    <a href="#" class="arrow more fright">Kuhu siit?</a> </header>
+    <p class="fleft">{$lang['reviews']}</p>
+    <a href="{$smarty.const.WEBROOT}/review/add/" class="arrow more fright">{$lang['newreview']}</a></header>
 	
 	<h1 style="text-transform: uppercase;">{$lang['reviews']}</h1>
 	<table id="contentTable">
@@ -14,9 +14,9 @@
 	        </thead>
 	        <tbody>
 	            {foreach from=$entities item=review}
-	                <tr>
+	                <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/review/details/{$review->getId()}'">
 	                {assign var=productId value=$review->getProductId()}
-	                    <td><a href="{$smarty.const.WEBROOT}/review/details/{$review->getId()}">{$products[$productId]}</a></td>
+	                    <td>{$products[$productId]}</td>
 	                    <td>{$review->getUser()}</td>
 	                    <td>{$review->getRating()}</td>
 	                </tr>

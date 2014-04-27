@@ -1,9 +1,9 @@
 <header class="title clearfix">
 	<p class="fleft"></p>
-    <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">List of all products</a>
+    <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
 </header>
 
-<h1 style="text-transform: uppercase;">Freshest top 4</h1>
+<h1 style="text-transform: uppercase;">{$lang['topFresh']}</h1>
 
 {foreach from=$fresh item=entity}
 <figure class="work"> 	
@@ -14,7 +14,8 @@
 	</div>
     <figcaption> 
     	<a href="{$smarty.const.WEBROOT}/product/details/{$entity->getId()}" class="arrow">{$entity->getManufactor()} {$entity->getName()}</a>
-        <p>Lorem ipsum dolor set amet Lorem ipsum dolor set amet Lorem ipsum dolor set amet</p>
+        <p><b>{$lang['alc']}</b> {$entity->getAlc()} %</p>
+        <p><b>{$lang['origin']}</b> {$entity->getOrigin()}</p>
     </figcaption>
 </figure>
 {/foreach}
