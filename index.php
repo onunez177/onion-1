@@ -7,6 +7,15 @@ require_once 'app/env.php';
 if (isset($_GET['action'])) {
 	switch($_GET['action']) {
 		/**
+		 * Action sets session type to be beer (1) or wine (2)
+		 */
+		case 'setType':
+			$_SESSION['type'] = (int)$_GET['type'];
+			$view = new Views\Sample();
+			$view->defaultView();
+			break;
+			
+		/**
 		 * Action tries to enter product to database
 		 */
 		case 'productAdd':
@@ -49,6 +58,6 @@ if (isset($_GET['action'])) {
 		}
 	} else {
 		$view = new Views\Sample();
-		$view->defaultView();
+		$view->chooseSideView();
 	}
 }
