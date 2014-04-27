@@ -8,7 +8,6 @@ Description: A clean and simple HTML5/CSS3 template
 Author: Sylvain Lafitte
 Author URI: http://sylvainlafitte.com
 */
-
 /* --- CUSTOM RESET --- */
 /* using h5bp.com/css by HTML5 Boilerplate and Normalize.css by Nicolas Gallagher and Jonathan Neal */
 article, aside, details, figcaption, figure, 
@@ -16,16 +15,7 @@ footer, header, hgroup, menu, nav, section {display: block; overflow:hidden;}
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-body { margin: 0; font-size: 12px; line-height: 1.5; }
 body, button, input, select, textarea { font-family: Arial, sans-serif; color: #666666; }
-::-moz-selection { background: #DF7401; color: #fff; text-shadow: none; }
-::selection { background: #DF7401; color: #fff; text-shadow: none; }	
-/* LINKS */
-a { color: #DF7401; cursor: pointer; }
-a:hover { color: #DF7401; 
-transition: color 0.2s linear;-moz-transition: color 0.2s linear;-webkit-transition: color 0.2s linear;-o-transition: color 0.2s linear;  } 
-a:visited { color: ;}
-*:hover, *:focus, *:active { outline: 0; outline: none; }
 /* TYPO */
 abbr[title] { border-bottom: 1px dotted; }
 dfn { font-style: italic; }
@@ -76,7 +66,7 @@ h4 { font-size: 18px }
 h5 { font-size: 14px; text-transform: uppercase; margin: 0; color: #555; }
 h6 { font-size: 12px; margin-bottom: 2px; }
 body { width: 100%; min-width: 988px; overflow: hidden; }
-.center { margin-left: auto; margin-right: auto; display: block; clear: both; overflow: hidden; padding: 0 5px; width: 978px; }
+.center { margin-left: auto; margin-right: auto; display: block; clear: both; overflow: hidden; padding: 0 5px; width: 950px;}
 .column4 { width: 22.6993865%; overflow: hidden; float: left; display: block; height: 100%; }
 .column3 { width: 31.2883436%; overflow: hidden; float: left; display: block; height: 100%; }
 .column2 { width: 48.4662577%; overflow: hidden; float: left; display: block; height: 100%; }
@@ -98,13 +88,13 @@ header#navtop { margin-bottom: 50px; background: url(../img/stripes.png) no-repe
 header nav { margin-top: 60px }
     header nav ul { float: left; overflow: hidden; padding: 0 30px 0 20px; border-left: 1px solid #ddd; line-height: 24px; }
 nav a, menu a { text-decoration: none; color: #666; }
-.navactive { color: #DF7401 }
+
 /**/
 .part { margin-bottom: 80px }
 .title { border-top: 1px solid #999; padding-top: 10px; color: #555; margin-bottom: 30px; }
 /**/
-.arrow { padding-right: 15px; background: url(../img/arrow.png) no-repeat right center; text-decoration: none; }
-.arrow:hover { background: url(../img/arrowhover.png) no-repeat right center; color: #DF7401; }
+.arrow { padding-right: 15px; background: url(../images/arrow.png) no-repeat right center; text-decoration: none; }
+
 .more { color: #999; font-style: italic; }
 /* SLIDER */
 #slides { position: relative; z-index: 1; }
@@ -144,7 +134,7 @@ footer li:last-child { margin-right: 0; padding-right: 0; border-right: none; }
     .works figcaption, .work figcaption { margin-top: 10px; padding: 0 5px; white-space: nowrap; }
         .works figcaption a, .work figcaption a { margin: 0 0 2px; color: #555; font-weight: bold; }
         .works figcaption p, .work figcaption p { margin: 0; }
-.main .work:last-child { margin-right: 0 }
+.main .work:last-child { margin-right: 0; }
 .works .content .work:nth-child(3n) { margin-right: 0 }
 .works .content .work { margin-bottom: 40px; position: relative; }
 .works menu a { cursor: pointer }
@@ -180,7 +170,7 @@ form { margin-top: 30px }
     form ul li, .contact_ie9 li { margin-bottom: 30px }
     form input, form textarea, .contact_ie9 input, .contact_ie9 textarea { width: 60%; height: 25px; line-height: 25px; padding: 5px; border: 1px solid #DDD; color: #999; }
     form input, .contact_ie9 input { padding-right: 20px }
-    form textarea, .contact_ie9 textarea { height: 200px; width: 97%; }
+    form textarea, .contact_ie9 textarea { height: 100px; width: 97%; }
     form button#submit, .contact_ie9 #submit { line-height: 18px }
 /*html5/css3*/
 input:required:valid { background: url(../img/valid.png) no-repeat 98% center }

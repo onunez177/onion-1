@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+body { margin: 0; font-size: 12px; line-height: 1.5; background: url('../images/wp.jpg') top center no-repeat;}
+body {background-attachment: fixed;}
+::-moz-selection { background: #DF7401; color: #fff; text-shadow: none; }
+::selection { background: #DF7401; color: #fff; text-shadow: none; }
+	
+/* LINKS */
+a { color: #DF7401; cursor: pointer; }
+a:hover { color: #DF7401; 
+transition: color 0.2s linear;-moz-transition: color 0.2s linear;-webkit-transition: color 0.2s linear;-o-transition: color 0.2s linear;  } 
+a:visited { color: ;}
+*:hover, *:focus, *:active { outline: 0; outline: none; }
+
+.navactive { color: #DF7401 }
+.arrow:hover { color: #DF7401; }
+
+.markedWord {
+	color: #DF7401;
+	white-space: nowrap;
+}
+
+
+/**
+ * my datatable styles
+ */
+ 
+table.dataTable tr:hover {
+    color:#FFF;
+    background-color: #DF7401;
+    cursor:pointer;
+}
+table.dataTable tr:hover td.sorting_1 {
+    color:#FFF;
+    background-color: #DF7401;
+    cursor:pointer;
+}
+table.dataTable tr:hover th {
+	background-color: #fff;
+    color: #555;
+}
