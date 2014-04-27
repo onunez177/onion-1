@@ -12,7 +12,7 @@ namespace Views;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
  * @link       -
  */
-class Product extends Page implements \Interfaces\Presentable {
+class Product extends BeerPlanet implements \Interfaces\Presentable {
 	/**
 	 * Product image thumbnail width
 	 * @var int
@@ -60,9 +60,15 @@ class Product extends Page implements \Interfaces\Presentable {
 	 */
 	public function addView($message = false) {
 		$orm = new \Services\ORM();
+		$type = new \Entities\Type();
+		
+		//get only type that user has selected
+		$type->setId($this->_drinkType);
+		//get only products that are the type that user selected
+		$this->_entity->setTypeId($this->_drinkType);
 		
 		$products = $this->_service->getAll($this->_entity);
-		$types = $orm->getAll(new \Entities\Type());
+		$types = $orm->getAll($type);
 		//read all subtypes for productList
 		$subTypes = $orm->getAll(new \Entities\SubType());
 		$this->_smarty->assign('types', $types);
@@ -89,10 +95,10 @@ class Product extends Page implements \Interfaces\Presentable {
 			$product = $this->_service->select($this->_entity);
 			if (!$product) {
 				$this->setMessage(
-						new \Entities\Message(
-								\Enum\MessageType::Error,
-								$this->_translation['notFound']
-						));
+					new \Entities\Message(
+						\Enum\MessageType::Error,
+						$this->_translation['notFound']
+					));
 			} else {
 				$form = new \Forms\Form($this->_entity);
 				$array = $form->objectToForm($product);
@@ -115,7 +121,7 @@ class Product extends Page implements \Interfaces\Presentable {
 					'average', 
 					$this->_calculateAverageScore($reviews)
 				);
-				$imgName = $this->_getImgName($product);
+				$imgName = $this->getImgName($product);
 				$this->_smarty->assign('reviews', $reviews);
 				$this->_smarty->assign('form', $array);
 				$this->_smarty->assign('encodedName', $imgName);
@@ -130,21 +136,13 @@ class Product extends Page implements \Interfaces\Presentable {
 			}
 		} else {
 			$this->setMessage(
-					new \Entities\Message(
-							\Enum\MessageType::Error,
-							$this->_translation['invalidInput']
-					));
+				new \Entities\Message(
+					\Enum\MessageType::Error,
+					$this->_translation['invalidInput']
+				));
 		}
 		$this->setMessage($message);
 		$this->display();
-	}
-	
-	private function _getImgName($product) {
-		//FIXME: some special chars do not show pictures correctly
-		return urlencode(
-			$product->getManufactor()
-			. '_' . $product->getName() . '.png'
-		);
 	}
 	
 	/**
@@ -171,6 +169,7 @@ class Product extends Page implements \Interfaces\Presentable {
 		$st = $orm->getAll(new \Entities\SubType());
 		$this->_smarty->assign('types', $t);
 		$this->_smarty->assign('subtypes', $st);
+		$this->_entity->setTypeId($this->_drinkType);
 		parent::listView($message);
 	}
 	
@@ -195,7 +194,7 @@ class Product extends Page implements \Interfaces\Presentable {
 	}
 
 	/**
-	 * Method outputs desired type subtypes as JSON
+	 * Method outputs desired type subtypes as JSON. Type names are translated
 	 * @param int $typeId
 	 * @return string
 	 */
@@ -233,17 +232,21 @@ class Product extends Page implements \Interfaces\Presentable {
 		\Misc\Image::uploadImage($_FILES, $filename);
 	}
 	
+	/**
+	 * Method shows last 4 added items on Fresh Top page
+	 */
 	public function freshView() {
 		$orm = new \Services\ORM();
 		$t = $orm->getAll(new \Entities\Type());
 		$st = $orm->getAll(new \Entities\SubType());
 		$this->_smarty->assign('types', $t);
 		$this->_smarty->assign('subtypes', $st);
+		$this->_entity->setTypeId($this->_drinkType);
 		$entities = $this->_service->getAll($this->_entity);
 		$fresh = array_slice($entities, 0, 4);
 		$imgnames = array();
 		foreach ($fresh as $k => $itm) {
-			$imgnames[$itm->getId()] = $this->_getImgName($itm);
+			$imgnames[$itm->getId()] = $this->getImgName($itm);
 		}
 		$this->_smarty->assign('fresh', $fresh);
 		$this->_smarty->assign('images', $imgnames);
