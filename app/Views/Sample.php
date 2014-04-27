@@ -14,7 +14,7 @@ namespace Views;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
  * @link       -
  */
-class Sample extends Page implements \Interfaces\Presentable {
+class Sample extends BeerPlanet implements \Interfaces\Presentable {
 	/**
 	 * Initialize view specific service for other methods
 	 * @see \Views\Page::_setService()
@@ -42,9 +42,18 @@ class Sample extends Page implements \Interfaces\Presentable {
 	 * @see \Views\Page::defaultView()
 	 */
 	public function defaultView($message = false) {
-		$this->_content = "hello world!";
+		$this->_content = $this->_smarty->fetch('welcome.tpl');
 		$this->setMessage($message);
 		$this->display();
+	}
+	
+	public function chooseSideView() {
+		//assign messages object to page
+		$this->_smarty->assign('messages', $this->_messages);
+		//assign content object to page
+		$this->_smarty->assign('content', $this->_content);
+		//display index page
+		$this->_smarty->display('chooseSide.tpl');
 	}
 	
 	/**
