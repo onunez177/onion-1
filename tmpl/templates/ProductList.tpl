@@ -9,9 +9,10 @@
             <tr>
                 <th width="20%">{$lang['name']}</th>
                 <th width="20%">{$lang['manufactor']}</th>
+                <th width="10%">{$lang['averageRating']}</th>
                 <th width="20%">{$lang['type']}</th>
                 <th width="20%">{$lang['subtype']}</th>
-                <th width="20%">{$lang['alc']}</th>
+                <th width="10%">{$lang['alc']}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                 <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/product/details/{$product->getId()}'">
                     <td>{$product->getName()}</td>
                     <td>{$product->getManufactor()}</td>
+                    <td>{$ratings[$product->getId()]}</td>
                     <td>{$lang[$typeName]}</td>
                     <td>{$lang[$subTypeName]}</td>
                     <td>{$product->getAlc()|string_format:"%.1f"}</td>
