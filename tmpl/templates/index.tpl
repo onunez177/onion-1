@@ -31,6 +31,18 @@
 </head>
 
 <body>
+{**
+  <!-- Include FB, because we all love FB -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/et_EE/all.js#xfbml=1&appId=151992804893154";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script> **}
 <header class="center clearfix" id=""><a href="{$smarty.const.WEBROOT}/?action=setType&type=1"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo.jpg" alt="{$lang['drinkType1']}{$lang['planet']}" /></a><a href="{$smarty.const.WEBROOT}/?action=setType&type=2"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo2.jpg" alt="{$lang['drinkType2']}{$lang['planet']}" /></a>
   <nav class="fright">
     <ul>
@@ -63,9 +75,15 @@
 </div>
 <footer class="center part clearfix">
   <article class="column3 mright ">
-      <h5>{$lang['aboutus']}</h5>
+      <h5>{$lang['donate']}</h5>
       <div class="sepmini"></div>
-      {$lang['aboutusDetails']}
+      {$lang['donateDetails']}
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align:center">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="5DNVC634SR3NJ">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
     </article>
     <article class="column3 mright ">
       <h5>{$lang['help']}</h5>
@@ -76,6 +94,7 @@
       <h5>{$lang['contactInfo']}</h5>
       <div class="sepmini"></div>
       <p>{$lang['contactDetails']}</p>
+      {**<div class="fb-like" data-href="{$smarty.const.LIKEURL}" data-width="250" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>**}
     </article>
 </footer>
 <!--[if (gte IE 6)&(lte IE 8)]>
