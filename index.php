@@ -5,12 +5,15 @@
 require_once 'app/env.php';
 //show submit form, or do feedback saving
 if (isset($_GET['action'])) {
+	//for windows, pre-set get array keys
+	$_GET['object'] = '';
+	$_GET['method'] = '';
 	switch($_GET['action']) {
 		/**
 		 * Action sets session type to be beer (1) or wine (2)
 		 */
 		case 'setType':
-			$_SESSION['type'] = (int)$_GET['type'];
+			$_SESSION['type'] = (int)@$_GET['type'];
 			$view = new Views\Sample();
 			$view->defaultView();
 			break;
