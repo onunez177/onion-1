@@ -89,7 +89,17 @@ class Tools {
 		return stripslashes($str);
 	}
 	
+	/**
+	 * Method returns valid view class by input. If no such class is found, 
+	 * default Sample class is started
+	 * @param var $object View class name
+	 * @return var Class name with namespace
+	 */
 	public static function getValidView($object) {
-		return 'Views\\'.ucfirst($object);
+		$class = 'Views\\'.ucfirst($object);
+		if(!class_exists($class)) {
+			$class = 'Views\\Sample';
+		}
+		return $class;
 	}
 }
