@@ -17,8 +17,8 @@ class Image {
 	
 	/**
 	 * Method uploads picture to server
-	 * @param unknown $file
-	 * @param unknown $name
+	 * @param var $file HTTP FILE object
+	 * @param var $name Filename
 	 * @throws \Exception
 	 */
 	public static function uploadImage($file, $name) {
