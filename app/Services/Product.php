@@ -50,6 +50,22 @@ class Product extends ORM {
 		return $retval;
 	}
 	
+	/**
+	 * Method calculates average score for all products and returns them as
+	 * associative array productId -> average score
+	 * @param \Entities\Product[] $products
+	 * @return float[]
+	 */
+	public function getAveragesForProducts($products) {
+		$ratings = array();
+		foreach ($products as $product) {
+			$reviews = $this->getProductReviews($product->getId());
+			$average = $this->calculateAverageScore($reviews);
+			$ratings[$product->getId()] = $average;
+		}
+		return $ratings;
+	}
+	
 
 	/**
 	 * Method retrieves type subtypes

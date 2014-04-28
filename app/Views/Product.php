@@ -77,6 +77,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$typeSubTypes = $this->_service->getTypeSubTypes(array_shift($types)->getId());
 		$this->_smarty->assign('typeSubtypes', $typeSubTypes);
 		$this->_smarty->assign('subtypes', $subTypes);
+		$this->_smarty->assign('ratings', $this->_service->getAveragesForProducts($products));
 		$this->_smarty->assign('entities', $products);
 		$this->_content = $this->_smarty->fetch('ProductAdd.tpl');
 		$this->setMessage($message);
@@ -151,7 +152,13 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$this->_smarty->assign('types', $t);
 		$this->_smarty->assign('subtypes', $st);
 		$this->_entity->setTypeId($this->_drinkType);
-		parent::listView($message);
+		$products = $this->_service->getAll($this->_entity);
+		$ratings = $this->_service->getAveragesForProducts($products);
+		$this->_smarty->assign('ratings', $ratings);
+		$this->_smarty->assign('entities', $products);
+		$this->_content = $this->_smarty->fetch('ProductList.tpl');
+		$this->setMessage($message);
+		$this->display();
 	}
 
 	/**
