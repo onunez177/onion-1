@@ -67,12 +67,13 @@ $lang = array (
 	'soda' => 'Soda',
 	'rootbeer' => 'Root beer',
 	
-	'aboutus' => 'About us',
-	'aboutusDetails' => '<p>I am software architect/developer at Tieto Estonia AS who also enjoys a occasional beer or two.</p><p>I created this site to store all my findings in a newbish way.</p>',
+	'donate' => 'Donate!',
+	'donateDetails' => '<p>Please click the donate button below, if You appriciate the work I have done! Thank You!</p>',
+	/* 'aboutusDetails' => '<p>I am software architect/developer at Tieto Estonia AS who also enjoys a occasional beer or two.</p><p>I created this site to store all my findings in a newbish way.</p>', */
 	'help' => 'Help',
 	'helpDetails' => '<p>&raquo; To enter review, go to <b>New Review</b> page and find the product You just tasted</p><p>&raquo; If You do not find the product from our list, go to <b>New Product</b> page and add it Yourself!',
 	'contactInfo' => 'Contact Info',
-	'contactDetails' => '<p>If You have any suggestions, bug reports or any other ideas, please do not hesitate to contact me on following address</p><p>markuskarileet@hotmail.com</p>',	
+	'contactDetails' => 'If You have any suggestions, bug reports or any other ideas, please do not hesitate to contact me on following address: markuskarileet@hotmail.com',	
 	'downloadDisclaimer' => 'This template  downloaded form',	
 	
 	/* technical messages */
