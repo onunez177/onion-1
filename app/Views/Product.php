@@ -147,9 +147,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 	 */
 	public function listView($message = false) {
 		$orm = new \Services\ORM();
-		$t = $orm->getAll(new \Entities\Type());
 		$st = $orm->getAll(new \Entities\SubType());
-		$this->_smarty->assign('types', $t);
 		$this->_smarty->assign('subtypes', $st);
 		$this->_entity->setTypeId($this->_drinkType);
 		$products = $this->_service->getAll($this->_entity);
