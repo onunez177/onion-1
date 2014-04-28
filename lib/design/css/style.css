@@ -168,10 +168,10 @@ footer li:last-child { margin-right: 0; padding-right: 0; border-right: none; }
 form { margin-top: 30px }
     form label, .contact_ie9 label { display: block; margin-bottom: 10px; font-weight: bold; }
     form ul li, .contact_ie9 li { margin-bottom: 30px }
-    form input, form textarea, .contact_ie9 input, .contact_ie9 textarea { width: 60%; height: 25px; line-height: 25px; padding: 5px; border: 1px solid #DDD; color: #999; }
-    form input, .contact_ie9 input { padding-right: 20px }
+    form textarea, .contact_ie9 input, .contact_ie9 textarea { width: 60%; height: 25px; line-height: 25px; padding: 5px; border: 1px solid #DDD; color: #999; }
+    .contact_ie9 input { padding-right: 20px }
     form textarea, .contact_ie9 textarea { height: 100px; width: 97%; }
-    form button#submit, .contact_ie9 #submit { line-height: 18px }
+    .contact_ie9 #submit { line-height: 18px }
 /*html5/css3*/
 input:required:valid { background: url(../img/valid.png) no-repeat 98% center }
 input:invalid, textarea:invalid { }
