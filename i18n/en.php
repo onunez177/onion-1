@@ -30,6 +30,7 @@ $lang = array (
 	'year' => 'Year',
 	'alc' => 'Alc',
 	'origin' => 'Origin',
+	'selectOrigin' => 'Select country',
 	'user' => 'User',
 	'cancel' => 'Cancel',
 	'save' => 'Save',
