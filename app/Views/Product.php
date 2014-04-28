@@ -74,7 +74,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$this->_smarty->assign('types', $types);
 		//get only the subtypes of first type, do this after types array is
 		//assigned to smarty, because array_shift removes the first element 
-		$typeSubTypes = $this->_getTypeSubTypes(array_shift($types)->getId());
+		$typeSubTypes = $this->_service->getTypeSubTypes(array_shift($types)->getId());
 		$this->_smarty->assign('typeSubtypes', $typeSubTypes);
 		$this->_smarty->assign('subtypes', $subTypes);
 		$this->_smarty->assign('entities', $products);
@@ -115,23 +115,16 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 				//override default subTypeId
 				$array['subTypeId'] = $this->_translation[$st->getName()];
 				//add reviews to product
-				$reviews = $this->_getProductReviews($id);
+				$reviews = $this->_service->getProductReviews($id);
 				//add average to product
 				$this->_smarty->assign(
 					'average', 
-					$this->_calculateAverageScore($reviews)
+					$this->_service->calculateAverageScore($reviews)
 				);
 				$imgName = $this->getImgName($product);
 				$this->_smarty->assign('reviews', $reviews);
 				$this->_smarty->assign('form', $array);
 				$this->_smarty->assign('encodedName', $imgName);
-				\Misc\Image::createCroppedThumbnail(
-					APPPATH . 'uploads/', 
-					$imgName, 
-					self::IMG_X, 
-					self::IMG_Y,
-					'thumb'
-				);
 				$this->_content = $this->_smarty->fetch('ProductView.tpl');
 			}
 		} else {
@@ -143,18 +136,6 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		}
 		$this->setMessage($message);
 		$this->display();
-	}
-	
-	/**
-	 * Method returns product reviews by product ID
-	 * @param int $productId
-	 * @return Ambigous <multitype:, boolean, number, Object>
-	 */
-	private function _getProductReviews($productId) {
-		$orm = new \Services\ORM();
-		$review = new \Entities\Review();
-		$review->setProductId($productId);
-		return $orm->selectMulti($review, 'id', \Enum\Order::Desc);
 	}
 	
 	/**
@@ -172,53 +153,21 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$this->_entity->setTypeId($this->_drinkType);
 		parent::listView($message);
 	}
-	
-	/**
-	 * Method calculates the average score for given reviews
-	 * @param \Entities\Review[] $reviews
-	 * @return float 
-	 */
-	private function _calculateAverageScore($reviews) {
-		$score = 0;
-		$counter = 0;
-		if($reviews != false && count($reviews) > 0) {
-			foreach ($reviews as $review) {
-				$score += $review->getRating();
-				$counter++;
-			}
-			$retval = $score / $counter; 
-		} else {
-			$retval = 0;
-		}
-		return $retval;
-	}
 
 	/**
 	 * Method outputs desired type subtypes as JSON. Type names are translated
+	 * Method is to be called by ajax functions for subtype select
 	 * @param int $typeId
 	 * @return string
 	 */
 	public function getTypeSubTypesAsJson($typeId) {
-		$subtypes = $this->_getTypeSubTypes($typeId);
+		$subtypes = $this->_service->getTypeSubTypes($typeId);
 		$out = array();
 		foreach ($subtypes as $subtype) {
 			//create key->val array with ID and translated name
 			$out[$subtype->getId()] = $this->_translation[$subtype->getName()];
 		}
 		return json_encode($out);
-	}
-
-	/**
-	 * Method retrieves type subtypes
-	 * @param int $typeId
-	 * @return Ambigous <multitype:, boolean, number, Object>
-	 */
-	private function _getTypeSubTypes($typeId) {
-		$orm = new \Services\ORM();
-		$type = new \Entities\SubType();
-		$type->setTypeId($typeId);
-		$t = $orm->selectMulti($type, 'id', \Enum\Order::Asc);
-		return $t;
 	}
 	
 	/**
@@ -229,7 +178,16 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 	public function addAction($post) {
 		parent::addAction($post);
 		$filename = urlencode($post['manufactor'] . '_' . $post['name']);
+		//upload image to server
 		\Misc\Image::uploadImage($_FILES, $filename);
+		//create thumbnail on the fly
+		\Misc\Image::createCroppedThumbnail(
+			APPPATH . 'uploads/',
+			$filename,
+			self::IMG_X,
+			self::IMG_Y,
+			'thumb'
+		);
 	}
 	
 	/**

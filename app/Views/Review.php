@@ -53,7 +53,7 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 		$entity->setTypeId($this->_drinkType);
 		$products = $orm->getAll($entity);
 		
-		$reviews = $this->_getReviewsByProducts($products);
+		$reviews = $this->_service->getReviewsByProducts($products, $this->_drinkType);
 		$this->_smarty->assign('products', $products);
 		$this->_smarty->assign('entities', $reviews);
 		$this->_content = $this->_smarty->fetch('ReviewAdd.tpl');
@@ -62,7 +62,8 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	}
 	
 	/**
-	 * Method to add review for predefined product
+	 * Method to show view where user can add review 
+     * under predefined product (product is already selected)
 	 */
 	public function addUnderView($productId) {
 		$orm = new \Services\ORM();
@@ -133,32 +134,11 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 		$entity->setTypeId($this->_drinkType);
 		$p = $orm->getAll($entity);
 		$this->_smarty->assign('products', $p);
-		$this->_smarty->assign('entities', $this->_getReviewsByProducts($p));
+		$this->_smarty->assign('entities', $this->_service->getReviewsByProducts($p, $this->_drinkType));
 		$this->_content = $this->_smarty->fetch('ReviewList.tpl');
 		$this->setMessage($message);
 		$this->display();
 	}
 	
-	/**
-	 * Method returns all reviews by product type. 
-	 * @param unknown $products
-	 * @return multitype:unknown
-	 */
-	private function _getReviewsByProducts($products) {
-		$orm = new \Services\ORM();
-		$entity = new \Entities\Product();
-		$entity->setTypeId($this->_drinkType);
-		$entities = $this->_service->getAll($this->_entity);
-		$out = array();
-		//make sure that entities are only those reviews that review the desired
-		//type kind of products
-		
-		foreach ($entities as $review) {
-			$entity->setId($review->getProductId());
-			if ($orm->select($entity)) {
-				$out[$review->getId()] = $review;
-			}
-		}
-		return $out;
-	}
+
 }
