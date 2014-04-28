@@ -9,3 +9,5 @@
  * @var boolean
  */
 define('SETDBENCODING', true);
+
+define('NOIMAGE', 'noimage.png');

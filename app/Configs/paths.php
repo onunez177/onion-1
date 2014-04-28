@@ -37,6 +37,12 @@ define('LOGGERDIR', APPPATH . 'lib/apache-log4php-2.3.0/');
 
 /**
  * Define path for Smarty template files
- * @var unknown_type
+ * @var var
  */
 define('TEMPLATES', APPPATH . 'tmpl/');
+
+/**
+ * Define path for images folder (does not effect CSS)
+ * @var var
+ */
+define('IMAGES', APPPATH . 'lib/design/images/');
