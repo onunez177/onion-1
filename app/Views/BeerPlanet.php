@@ -47,11 +47,30 @@ abstract class BeerPlanet extends Page {
 		}
 	}
 
+	/**
+	 * Method returns the image name. If image is not found, default image
+	 * is shown
+	 * @param unknown $product
+	 * @return string Image name
+	 */
 	public function getImgName($product) {
 		//FIXME: some special chars do not show pictures correctly
-		return urlencode(
-				$product->getManufactor()
-				. '_' . $product->getName() . '.png'
+		$name = urlencode(
+			$product->getManufactor()
+			. '_' . $product->getName() . '.png'
 		);
+		if (!file_exists(APPPATH . 'lib/design/images/' . $name)) {
+			$name = 'noimage.png';
+		}
+		return $name;
+	}
+	
+	/**
+	 * Method checks if image exists on server or not
+	 * @param \Entities\Product $product
+	 * @return boolean
+	 */
+	public function imageExists($product) {
+		return !file_exists($this->getImgName($product));
 	}
 }
