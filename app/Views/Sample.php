@@ -61,10 +61,7 @@ class Sample extends BeerPlanet implements \Interfaces\Presentable {
 	 * @param \Entities\Message $message Message to display
 	 */
 	public function addView($message = false) {
-		$form = new \Forms\Form(new \Entities\Sample());
-		$this->_smarty->assign('form', $form->init());
-		$this->_content = $this->_smarty->fetch('sampleAdd.tpl');
-		$this->display($message);
+		
 	}
 	
 	public function detailsView($id, $message = false) {
