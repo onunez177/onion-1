@@ -32,7 +32,7 @@ abstract class BeerPlanet extends Page {
 	 * @see $_SESSION['type'] Drink type ID
 	 */
 	private function _setDrinkType() {
-		$type = (int)$_SESSION['type'];
+		$type = (int)@$_SESSION['type'];
 		//set drink type variable. If not set, then Beer is used!
 		switch ($type) {
 			case \Enum\DrinkType::Beer:
