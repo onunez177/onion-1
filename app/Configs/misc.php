@@ -10,4 +10,15 @@
  */
 define('SETDBENCODING', true);
 
+/**
+ * Name of the image that is used as a default image when nothing is uploaded
+ * Path to this image is found in paths.php (IMAGES)
+ * @var var
+ */
 define('NOIMAGE', 'noimage.png');
+
+/**
+ * URL to page that users can like on Facebook
+ * @var var
+ */
+define('LIKEURL', 'http://www.postimees.ee');
