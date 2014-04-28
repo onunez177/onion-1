@@ -18,5 +18,27 @@ namespace Services;
  * @link       -
  */
 class Review extends ORM {
-
+	/**
+	 * Method returns all reviews by product type. This method is nessessary
+	 * because product has the type identifier, review does not.
+	 * //TODO: create a special SQL method here
+	 * @param \Entities\Product[] $products Array of products to filter from
+	 * @return \Entities\Review[] Array of reviews on success, false otherwise
+	 */
+	public function getReviewsByProducts($products, $type) {
+		$product = new \Entities\Product();
+		$product->setTypeId($type);
+		$reviews = $this->getAll(new \Entities\Review());
+		$out = array();
+		//make sure that entities are only those reviews that review the 
+		//desired type kind of products
+	
+		foreach ($reviews as $review) {
+			$product->setId($review->getProductId());
+			if ($this->select($product)) {
+				$out[$review->getId()] = $review;
+			}
+		}
+		return $out;
+	}
 }

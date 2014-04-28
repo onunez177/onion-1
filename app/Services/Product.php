@@ -19,4 +19,47 @@ namespace Services;
  */
 class Product extends ORM {
 
+	/**
+	 * Method returns product reviews by product ID
+	 * @param int $productId
+	 * @return Ambigous <multitype:, boolean, number, Object>
+	 */
+	public function getProductReviews($productId) {
+		$review = new \Entities\Review();
+		$review->setProductId($productId);
+		return $this->selectMulti($review, 'id', \Enum\Order::Desc);
+	}
+
+	/**
+	 * Method calculates the average score for given reviews
+	 * @param \Entities\Review[] $reviews
+	 * @return float
+	 */
+	public function calculateAverageScore($reviews) {
+		$score = 0;
+		$counter = 0;
+		if($reviews != false && count($reviews) > 0) {
+			foreach ($reviews as $review) {
+				$score += $review->getRating();
+				$counter++;
+			}
+			$retval = $score / $counter;
+		} else {
+			$retval = 0;
+		}
+		return $retval;
+	}
+	
+
+	/**
+	 * Method retrieves type subtypes
+	 * @param int $typeId
+	 * @return Ambigous <multitype:, boolean, number, Object>
+	 */
+	public function getTypeSubTypes($typeId) {
+		$type = new \Entities\SubType();
+		$type->setTypeId($typeId);
+		$t = $this->selectMulti($type, 'id', \Enum\Order::Asc);
+		return $t;
+	}
 }
