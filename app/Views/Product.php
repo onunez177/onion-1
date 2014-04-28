@@ -183,6 +183,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 	 * @param unknown $post
 	 */
 	public function addAction($post) {
+		$post['alc'] = str_replace(',', '.', $post['alc']);
 		parent::addAction($post);
 		$filename = urlencode($post['manufactor'] . '_' . $post['name']);
 		//upload image to server
