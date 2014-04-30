@@ -28,10 +28,21 @@
   <!-- Country selector from https://github.com/JamieAppleseed/selectToAutocomplete -->
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.browser.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.select-to-autocomplete.js"></script>
+  <!-- GA tracking -->
+  {literal}
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50544602-1', 'planet.ee');
+  ga('send', 'pageview');
+  </script>
+  {/literal}
 </head>
 
 <body>
-{**
   <!-- Include FB, because we all love FB -->
 <div id="fb-root"></div>
 <script>
@@ -42,7 +53,7 @@
       js.src = "//connect.facebook.net/et_EE/all.js#xfbml=1&appId=151992804893154";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-</script> **}
+</script>
 <header class="center clearfix" id=""><a href="{$smarty.const.WEBROOT}/?action=setType&type=1"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo.jpg" alt="{$lang['drinkType1']}{$lang['planet']}" /></a><a href="{$smarty.const.WEBROOT}/?action=setType&type=2"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo2.jpg" alt="{$lang['drinkType2']}{$lang['planet']}" /></a>
   <nav class="fright">
     <ul>
@@ -94,7 +105,7 @@
       <h5>{$lang['contactInfo']}</h5>
       <div class="sepmini"></div>
       <p>{$lang['contactDetails']}</p>
-      {**<div class="fb-like" data-href="{$smarty.const.LIKEURL}" data-width="250" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>**}
+      <div class="fb-like" data-href="{$smarty.const.LIKEURL}" data-width="250" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
     </article>
 </footer>
 <!--[if (gte IE 6)&(lte IE 8)]>
