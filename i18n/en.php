@@ -11,8 +11,9 @@ $lang = array (
 	'drinkType2' => 'Wine',
 	'planet' => 'Planet',
 	'welcomeTo' => 'Welcome to',	
-	'introtext' => '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit.</p>
-	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit.</p>',
+	'introtext' => "<p>This site was made keep track of the beers I have tasted since Q01 of 2014. But that's not the only reason! I also made a very simple ORM (Object Relational Mapping) for PHP and I wanted to try it out somewhere. So here it is: a site built on Onion ( https://github.com/Shmarkus/onion )! Feel free to check out the source and build Your own site on this ORM..</p>
+	<p>..or..</p>
+	<p>..if You have Your beer/wine tasting experiences, please, don't hesitate to add these products, if they're not present, and write a small review.</p> <p>You COULD do it on ratebeer.com, but THAT would be mainstream ;)</p>",
 	/* menu items */
 	'home' => 'Home',
 	'reviews' => 'Reviews',
