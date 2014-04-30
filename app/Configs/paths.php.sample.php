@@ -46,3 +46,9 @@ define('TEMPLATES', APPPATH . 'tmpl/');
  * @var var
  */
 define('IMAGES', APPPATH . 'lib/design/images/');
+
+/**
+ * Define path for uploaded images folder
+ * @var var
+ */
+define('IMGUPLOAD', APPPATH . 'uploads/');
