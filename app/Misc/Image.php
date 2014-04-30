@@ -28,7 +28,7 @@ class Image {
 			if ($file["picture"]["type"] != "image/png") {
 				throw new \Exception('Image can be PNG only!');
 			}
-			move_uploaded_file($file["picture"]["tmp_name"], APPPATH . 'uploads/'.$name.'.png');
+			move_uploaded_file($file["picture"]["tmp_name"], APPPATH . 'uploads/'.$name);
 		}
 	}	
 	
