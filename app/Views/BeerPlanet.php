@@ -59,7 +59,7 @@ abstract class BeerPlanet extends Page {
 			$product->getManufactor()
 			. '_' . $product->getName() . '.png'
 		);
-		if (!file_exists(IMAGES . $name)) {
+		if (!file_exists(IMGUPLOAD . $name)) {
 			$name = NOIMAGE;
 		}
 		return $name;
