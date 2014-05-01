@@ -49,19 +49,27 @@ abstract class BeerPlanet extends Page {
 
 	/**
 	 * Method returns the image name. If image is not found, default image
-	 * is shown
-	 * @param unknown $product
-	 * @return string Image name
+	 * name is returned
+	 * @param \Entities\Product $product
+	 * @return string File name with .png appended
 	 */
 	public function getImgName($product) {
-		//FIXME: some special chars do not show pictures correctly
-		$name = urlencode(
-			$product->getManufactor()
-			. '_' . $product->getName() . '.png'
-		);
+		$name = $this->_createName($product->getManufactor(), $product->getName());
+		
 		if (!file_exists(IMGUPLOAD . $name)) {
 			$name = NOIMAGE;
 		}
+		return $name;
+	}
+	
+	/**
+	 * Methos appends a and b and replaces all non-word characters
+	 * @param var $a manufactor
+	 * @param var $b name
+	 * @return string File name with .png appended
+	 */
+	protected function _createName($a, $b) {
+		$name = preg_replace("/\W/", "", $a . '_' . $b) . '.png';
 		return $name;
 	}
 	

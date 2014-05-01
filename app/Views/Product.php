@@ -183,7 +183,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 	public function addAction($post) {
 		$post['alc'] = str_replace(',', '.', $post['alc']);
 		parent::addAction($post);
-		$filename = urlencode($post['manufactor'] . '_' . $post['name']) . '.png';
+		$filename = $this->_createName($post['manufactor'], $post['name']);
 		//upload image to server
 		\Misc\Image::uploadImage($_FILES, $filename);
 		//create thumbnail on the fly
