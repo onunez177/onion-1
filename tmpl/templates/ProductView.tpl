@@ -3,7 +3,7 @@
     <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
 </header>
 
-<h1 style="text-transform: uppercase;">{$form.manufactor} <span class="markedWord">{$form.name}</span></h1>
+<h1 style="text-transform: uppercase;">{$form.name}</h1>
 
 <table cellspacing="15">
 	<tr><td>
@@ -13,6 +13,7 @@
 	</td><td>
 	<div id="rating"></div>
 	<table>
+		<tr><th>{$lang['manufactor']}</th><td>{$form.manufactor}</td></tr>
 		<tr><th>{$lang['type']}</th><td>{$form.typeId}</td></tr>
 		<tr><th>{$lang['subtype']}</th><td>{$form.subTypeId}</td></tr>
 		{if $form.year gt 0}
