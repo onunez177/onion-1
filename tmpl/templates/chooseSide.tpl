@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/beer.css">
 <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/style.css">
+{include file="GATracker.tpl"}
 </head>
 
 <body>
