@@ -64,8 +64,7 @@ $lang = array (
 	'rose' => 'Rosé',
 	'ale' => 'Ale',
 	'mead' => 'Mead',
-	'softdrink' => 'Soft drink',
-	'soda' => 'Soda',
+	'sparkling' => 'Sparkling',
 	'rootbeer' => 'Root beer',
 	
 	'donate' => 'Donate!',
@@ -82,5 +81,13 @@ $lang = array (
 	'insertFail' => 'Insert failed for some reason',
 	'internalError' => 'Internal error occurred, event has been logged and worked with',
 	'invalidInput' => 'Server received invalid input, please try again (do not use F5)',
-	'notFound' => 'Requested object not found in database!'
+	'notFound' => 'Requested object not found in database!',
+			
+	/* adjectives */
+	'bitter' => '',
+	'tasteless' => '',
+	'sour' => '',
+	'mellow' => '',
+	'tasteful' => '',
+	'hopy' => ''
 );
