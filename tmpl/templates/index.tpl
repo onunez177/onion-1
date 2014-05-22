@@ -50,7 +50,7 @@
       <li><a href="{$smarty.const.WEBROOT}/review/list/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'list'}class="navactive"{/if}>{$lang['reviews']}</a></li>
     </ul>
     <ul>
-      <li><a href="{$smarty.const.WEBROOT}/product/fresh/" {if $smarty.get.object eq 'product' && $smarty.get.method eq 'fresh'}class="navactive"{/if}>{$lang['products']}</a></li>
+      <li><a href="{$smarty.const.WEBROOT}/product/list/" {if $smarty.get.object eq 'product' && $smarty.get.method eq 'fresh'}class="navactive"{/if}>{$lang['products']}</a></li>
       <li><a href="{$smarty.const.WEBROOT}/review/add/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'add'}class="navactive"{/if}>{$lang['newreview']}</a></li>
     </ul>
     <ul>
