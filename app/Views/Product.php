@@ -141,21 +141,31 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 	
 	/**
 	 * Method overrides default list view implemented in Page class. This is
-	 * done so, that extra information could be passed to specific view. Once
-	 * this is done, the original method is called
-	 * @see \Views\Page::listView()
+	 * done so, that extra information could be passed to specific view. Also
+	 * top fresh 4 beverages are shown before list
 	 */
 	public function listView($message = false) {
 		$orm = new \Services\ORM();
+		$t = $orm->getAll(new \Entities\Type());
 		$st = $orm->getAll(new \Entities\SubType());
+		$this->_smarty->assign('types', $t);
 		$this->_smarty->assign('subtypes', $st);
 		$this->_entity->setTypeId($this->_drinkType);
+		$entities = $this->_service->getAll($this->_entity);
+		$fresh = array_slice($entities, 0, 4);
+		$imgnames = array();
+		foreach ($fresh as $k => $itm) {
+			$imgnames[$itm->getId()] = $this->getImgName($itm);
+		}
+		$this->_smarty->assign('fresh', $fresh);
+		$this->_smarty->assign('images', $imgnames);
 		$products = $this->_service->getAll($this->_entity);
 		$ratings = $this->_service->getAveragesForProducts($products);
 		$this->_smarty->assign('ratings', $ratings);
 		$this->_smarty->assign('entities', $products);
-		$this->_content = $this->_smarty->fetch('ProductList.tpl');
 		$this->setMessage($message);
+		
+		$this->_content = $this->_smarty->fetch('ProductList.tpl');
 		$this->display();
 	}
 
@@ -194,27 +204,5 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 			self::IMG_Y,
 			'thumb'
 		);
-	}
-	
-	/**
-	 * Method shows last 4 added items on Fresh Top page
-	 */
-	public function freshView() {
-		$orm = new \Services\ORM();
-		$t = $orm->getAll(new \Entities\Type());
-		$st = $orm->getAll(new \Entities\SubType());
-		$this->_smarty->assign('types', $t);
-		$this->_smarty->assign('subtypes', $st);
-		$this->_entity->setTypeId($this->_drinkType);
-		$entities = $this->_service->getAll($this->_entity);
-		$fresh = array_slice($entities, 0, 4);
-		$imgnames = array();
-		foreach ($fresh as $k => $itm) {
-			$imgnames[$itm->getId()] = $this->getImgName($itm);
-		}
-		$this->_smarty->assign('fresh', $fresh);
-		$this->_smarty->assign('images', $imgnames);
-		$this->_content = $this->_smarty->fetch('ProductFreshTop.tpl');
-		$this->display();
 	}
 }
