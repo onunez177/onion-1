@@ -319,3 +319,29 @@ label.error { color: #D84A38; margin: 10px 0 0 5px; font-weight: normal; font-st
     background-color: #FFBABA;
     background-image: url('../images/error.png');
 }
+
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+    width:500px;
+}
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+  	padding: 0;
+  	/* support: IE7 */
+  	*height: 1.7em;
+  	*top: 0.1em;
+}
+.custom-combobox-input {
+  	margin: 0;
+  	padding: 0.3em;
+}
+
+.productDropdown {
+	width:35px;
+	height:35px;
+}
