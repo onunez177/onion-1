@@ -8,12 +8,15 @@
 	<ul class="contact_ie9">
 		{if !isset($product)}
 	    <li>
-	        <label for="productId">{$lang['product']}</label>
-	        <select name="productId" id="productId" class="button" style="width:200px">
-			    {foreach from=$products item=product}
-			        <option value="{$product->getId()}">{$product->getName()}</option>
-			    {/foreach}
-		    </select>
+	    	<div class="ui-widget">
+		        <label for="productId">{$lang['product']}</label>
+		        <select name="productId" id="productId" class="button" style="width:200px">
+		        	<option value="">Select one...</option>
+				    {foreach from=$products item=product}
+				        <option value="{$product->getId()}">{$product->getManufactor()} {$product->getName()}</option>
+				    {/foreach}
+			    </select>
+		    </div>
 	    </li>
 	    {else}
 	    <li>
@@ -27,16 +30,48 @@
             <input type="text" name="user" required class="required" >
         </li>
         <li>
-            <label for="color">{$lang['color']}</label>
+            <label for="color" onclick="$('#c_inp').toggle();$('#c_cb_inp').toggle()">{$lang['color']}</label>
+            <div id="c_inp">
             <textarea name="color" cols="40" rows="6" required class="required"></textarea>
+            </div>
+            <div id="c_cb_inp" style="display:none">
+             <input type="checkbox" name="color_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
+             <input type="checkbox" name="color_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
+             <input type="checkbox" name="color_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
+             <input type="checkbox" name="color_cb[]" value="{$lang['light']}"><b>{$lang['light']}</b><br>
+             <input type="checkbox" name="color_cb[]" value="{$lang['dark']}"><b>{$lang['dark']}</b><br>
+             <input type="checkbox" name="color_cb[]" value="{$lang['golden']}"><b>{$lang['golden']}</b><br>
+            </div>
         </li>
         <li>
-            <label for="smell">{$lang['smell']}</label>
+            <label for="smell" onclick="$('#s_inp').toggle();$('#s_cb_inp').toggle()">{$lang['smell']}</label>
+            <div id="s_inp">
             <textarea name="smell" cols="40" rows="6" required class="required"></textarea>
+            </div>
+            <div id="s_cb_inp" style="display:none">
+             <input type="checkbox" name="smell_cb[]" value="{$lang['bittery']}"><b>{$lang['bittery']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['tasteless']}"><b>{$lang['tasteless']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['mellow']}"><b>{$lang['mellow']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['tasteful']}"><b>{$lang['tasteful']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
+             <input type="checkbox" name="smell_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
+            </div>
         </li>
         <li>
-            <label for="taste">{$lang['taste']}</label>
+            <label for="taste" onclick="$('#t_inp').toggle();$('#t_cb_inp').toggle()">{$lang['taste']}</label>
+            <div id="t_inp">
             <textarea name="taste" cols="40" rows="6" required class="required"></textarea>
+            </div>
+            <div id="t_cb_inp" style="display:none">
+             <input type="checkbox" name="taste_cb[]" value="{$lang['bittery']}"><b>{$lang['bittery']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['tasteless']}"><b>{$lang['tasteless']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['mellow']}"><b>{$lang['mellow']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['tasteful']}"><b>{$lang['tasteful']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
+             <input type="checkbox" name="taste_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
+            </div>
         </li>
         <li>
             <label for="description">{$lang['description']}</label>
@@ -57,6 +92,7 @@
           starOff : webroot + 'star-off.png',
           starOn  : webroot + 'star-on.png',
           number : 10,
+          hints: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
           scoreName: 'rating'
         });
     {/literal}
