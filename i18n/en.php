@@ -84,10 +84,16 @@ $lang = array (
 	'notFound' => 'Requested object not found in database!',
 			
 	/* adjectives */
-	'bitter' => '',
-	'tasteless' => '',
-	'sour' => '',
-	'mellow' => '',
-	'tasteful' => '',
-	'hopy' => ''
+	'bitter' => 'Bitter',
+	'bittery' => 'Bittery',
+	'tasteless' => 'Tasteless',
+	'sour' => 'Sour',
+	'mellow' => 'Mellow',
+	'tasteful' => 'Tasteful',
+	'hopy' => 'Hoppy',
+	'sweet' => 'Sweet',	
+	'tummine' => 'Tummine',
+	'light' => 'Light',
+	'dark' => 'Dark',
+	'golden' => 'Golden'
 );

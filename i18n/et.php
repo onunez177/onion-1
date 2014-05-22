@@ -88,10 +88,17 @@ $lang = array (
 	'notFound' => 'Otsitud objekti ei leitud andmebaasist!',
 			
 	/* adjectives */
-	'bitter' => 'Kibe',
+	'bitter' => 'Mõru',
+	'bittery' => 'Mõrkjas',
 	'tasteless' => 'Maitsetu',
 	'sour' => 'Hapu',
 	'mellow' => 'Mahe',
 	'tasteful' => 'Maitsekas',
-	'hopy' => 'Humalane'
+	'hopy' => 'Humalane',
+	'sweet' => 'Magus',	
+	'tummine' => 'Tummine',
+	'light' => 'Hele',
+	'dark' => 'Tume',
+	'golden' => 'Kuldne'			
+			
 );
