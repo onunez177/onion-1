@@ -140,5 +140,33 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 		$this->display();
 	}
 	
-
+	/**
+	 * Parse review checkboxes before generic addaction is initiated
+	 * (non-PHPdoc)
+	 * @see \Views\Page::addAction()
+	 */
+	public function addAction($post) {
+		$post = $this->_parseCheckboxes('taste', $post);
+		$post = $this->_parseCheckboxes('smell', $post);
+		$post = $this->_parseCheckboxes('color', $post);
+		parent::addAction($post);
+	}
+	
+	/**
+	 * Method reads checkbox values, glues them together with , and then replaces the
+	 * textarea element with the result. After this checkbox element is unset
+	 * @param var $type Type to check: color, taste, smell
+	 * @param var[] $post HTTP POST array
+	 * @return var[] 
+	 */
+	private function _parseCheckboxes($type, $post) {
+		//determine if checkboxes are used
+		if(array_key_exists($type . '_cb', $post)) {
+			//replace original contents with selection
+			$post[$type] = join(', ', $post[$type . '_cb']);
+			//unset checkbox array element, since it is not needed!
+			unset($post[$type . '_cb']);
+		}
+		return $post;
+	}
 }
