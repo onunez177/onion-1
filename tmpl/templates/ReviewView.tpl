@@ -1,5 +1,5 @@
 <header class="title clearfix">
-	<p class="fleft">{$lang['reviews']}</p>
+	<p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">{$lang['allReviews']}</a>
 </header>
 <div id="rating"></div>

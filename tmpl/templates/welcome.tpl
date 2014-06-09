@@ -1,5 +1,5 @@
 <header class="title clearfix">
-	<p class="fleft">{$lang['home']}</p>
+	<p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/" class="arrow more fright"></a>
 </header>
 {assign var=key value='drinkType'|cat:$smarty.session.type}
