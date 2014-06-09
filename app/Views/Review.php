@@ -48,14 +48,8 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	 * @param string $message
 	 */
 	public function addView($message = false) {
-		$orm = new \Services\ORM();
-		$entity = new \Entities\Product();
-		$entity->setTypeId($this->_drinkType);
-		$products = $orm->getAll($entity);
+		$this->_getAddViewItems();
 		
-		$reviews = $this->_service->getReviewsByProducts($products, $this->_drinkType);
-		$this->_smarty->assign('products', $products);
-		$this->_smarty->assign('entities', $reviews);
 		$this->_content = $this->_smarty->fetch('ReviewAdd.tpl');
 		$this->setMessage($message);
 		$this->display();
@@ -70,10 +64,8 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 		$product = new \Entities\Product();
 		$product->setId($productId);
 		$product = $orm->select($product);
-		$reviews = $this->_service->getAll($this->_entity);
+		$this->_getAddViewItems();
 		$this->_smarty->assign('product', $product);
-		$this->_smarty->assign('products', $products);
-		$this->_smarty->assign('entities', $reviews);
 		$this->_content = $this->_smarty->fetch('ReviewAdd.tpl');
 		$this->setMessage($message);
 		$this->display();
@@ -128,16 +120,50 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	 * @see \Views\Page::listView()
 	 */
 	public function listView($message = false) {
-		$orm = new \Services\ORM();
-		
-		$entity = new \Entities\Product();
-		$entity->setTypeId($this->_drinkType);
-		$p = $orm->getAll($entity);
-		$this->_smarty->assign('products', $p);
-		$this->_smarty->assign('entities', $this->_service->getReviewsByProducts($p, $this->_drinkType));
+        $this->_getListViewItems();
 		$this->_content = $this->_smarty->fetch('ReviewList.tpl');
 		$this->setMessage($message);
 		$this->display();
+	}
+	
+	/**
+	 * Method populates smarty elements: 
+	 * fresh - new reviews
+	 * products - products that have reviews
+	 * images - product images
+	 * entities - reviews
+	 */
+	private function _getListViewItems() {
+	    $orm = new \Services\ORM();
+	    
+	    $entity = new \Entities\Product();
+	    $entity->setTypeId($this->_drinkType);
+	    $p = $orm->getAll($entity);
+	    $entities = $this->_service->getReviewsByProducts($p, $this->_drinkType);
+	    $fresh = array_slice($entities, 0, 4);
+	    $imgnames = array();
+	    foreach ($fresh as $k => $itm) {
+	        $imgnames[$itm->getProductId()] = $this->getImgName($p[$itm->getProductId()]);
+	    }
+	    $this->_smarty->assign('fresh', $fresh);
+	    $this->_smarty->assign('products', $p);
+	    $this->_smarty->assign('images', $imgnames);
+	    $this->_smarty->assign('entities', $entities);
+	}
+	
+	/**
+	 * Method populates smarty elements
+	 * @see _getListViewItems
+	 * tasteHW - taste hotwords
+	 * appearanceHW - appearance hotwords
+	 * aromaHW - aroma hotwords
+	 */
+	private function _getAddViewItems() {
+	    $this->_getListViewItems();
+	    $this->_smarty->assign('tasteHW', $this->_getTasteHotwords());
+	    $this->_smarty->assign('appearanceHW', $this->_getAppearanceHotwords());
+	    $this->_smarty->assign('aromaHW', $this->_getAromaHotwords());
+	    
 	}
 	
 	/**
@@ -168,5 +194,17 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 			unset($post[$type . '_cb']);
 		}
 		return $post;
+	}
+	
+	private function _getAppearanceHotwords() {
+	    return array('light', 'red', 'dark', 'golden', 'clear', 'hazy', 'foamy', 'lessFoamy', 'tightFoam', 'cafe', 'chocolate', 'spicy', 'greenBottle');
+	}
+
+	private function _getAromaHotwords() {
+	    return array('weak', 'strong', 'hopy', 'sweet', 'sour', 'caramel', 'orange');
+	}
+	
+	private function _getTasteHotwords() {
+	    return array('bitter', 'lightTaste', 'mellow', 'tasteful', 'sweet', 'refreshing', 'lastingTaste', 'dry', 'wellBalanced', 'wheaty', 'caramel', 'heat', 'versatile', 'watery', 'hopy');
 	}
 }
