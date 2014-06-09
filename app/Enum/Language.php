@@ -23,6 +23,12 @@ class Language {
 	const Eng = 'en';
 	
 	/**
+	 * Constant for Estonian language
+	 * @var var
+	 */
+	const Est = 'et';
+	
+	/**
 	 * Constant for fallback language
 	 * @var var
 	 */
