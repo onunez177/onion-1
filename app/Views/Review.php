@@ -120,7 +120,7 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	 * @see \Views\Page::listView()
 	 */
 	public function listView($message = false) {
-        $this->_getListViewItems();
+        $this->_getListViewItems(); 
 		$this->_content = $this->_smarty->fetch('ReviewList.tpl');
 		$this->setMessage($message);
 		$this->display();
