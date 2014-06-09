@@ -1,5 +1,5 @@
 <header class="title clearfix">
-	<p class="fleft">{$lang['products']}</p>
+	<p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
 </header>
 
