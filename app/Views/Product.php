@@ -67,7 +67,14 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		//get only products that are the type that user selected
 		$this->_entity->setTypeId($this->_drinkType);
 		
-		$products = $this->_service->getAll($this->_entity);
+		$entities = $this->_service->getAll($this->_entity);
+		$fresh = array_slice($entities, 0, 4);
+		$imgnames = array();
+		foreach ($fresh as $k => $itm) {
+		    $imgnames[$itm->getId()] = $this->getImgName($itm);
+		}
+		$this->_smarty->assign('fresh', $fresh);
+		$this->_smarty->assign('images', $imgnames);
 		$types = $orm->getAll($type);
 		//read all subtypes for productList
 		$subTypes = $orm->getAll(new \Entities\SubType());
@@ -77,8 +84,8 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$typeSubTypes = $this->_service->getTypeSubTypes(array_shift($types)->getId());
 		$this->_smarty->assign('typeSubtypes', $typeSubTypes);
 		$this->_smarty->assign('subtypes', $subTypes);
-		$this->_smarty->assign('ratings', $this->_service->getAveragesForProducts($products));
-		$this->_smarty->assign('entities', $products);
+		$this->_smarty->assign('ratings', $this->_service->getAveragesForProducts($entities));
+		$this->_smarty->assign('entities', $entities);
 		$this->_content = $this->_smarty->fetch('ProductAdd.tpl');
 		$this->setMessage($message);
 		$this->display();
