@@ -95,5 +95,31 @@ $lang = array (
 	'tummine' => 'Tummine',
 	'light' => 'Light',
 	'dark' => 'Dark',
-	'golden' => 'Golden'
+	'golden' => 'Golden',
+			
+	'red' => 'Red',
+	'clear' => 'Clear',
+	'hazy' => 'Hazy',
+	'foamy' => 'Foamy',
+	'lessFoamy' => 'Light foam',
+	'tightFoam' => 'Tight foam',
+	'cafe' => 'Cafe',
+	'chocolate' => 'Chocolate',
+	'spicy' => 'Spicy',
+	'greenBottle' => 'Green bottle',
+	
+	'weak' => 'Weak',
+	'strong' => 'Strong',
+	'caramel' => 'Caramel',
+	'orange' => 'Orange',
+	
+	'lightTaste' => 'Light taste',
+	'refreshing' => 'Refreshing',
+	'lastingTaste' => 'Lasting taste',
+	'dry' => 'Dry',
+	'wellBalanced' => 'Well balanced',
+	'wheaty' => 'Wheaty',
+	'heat' => 'Heat',
+	'versatile' => 'Versatile',
+	'watery' => 'Watery'
 );

@@ -7,8 +7,8 @@
  */
 $lang = array (
 	'choose' => 'Milline on Su lemmikmürk, mu sõber?',
-	'drinkType1' => 'Õlu',
-	'drinkType2' => 'Vein',
+	'drinkType1' => 'Beer',
+	'drinkType2' => 'Wine',
 	'planet' => 'Planet',
 	'welcomeTo' => 'Teretulemast lehele',	
 	'introtext' => '<p>Lehekülg sai loodud mõttega kirja panna erinevate jookide maitsed, 
@@ -20,9 +20,9 @@ $lang = array (
 		ratebeer.com lehel teha, kuid SEE oleks liiga meinstriim ;)</p>',
 	/* menu items */
 	'home' => 'Avaleht',
-	'reviews' => 'Ülevaated',
+	'reviews' => 'Hinnangud',
 	'products' => 'Tooted',
-	'newreview' => 'Uus ülevaade',
+	'newreview' => 'Uus hinnang',
 	'newproduct' => 'Uus toode',
 	'links' => 'Lingid',	
 	'aboutSite' => 'Leheküljest',
@@ -42,10 +42,10 @@ $lang = array (
 	'allProducts' => 'Kõik tooted',
 	'latestProducts' => 'Viimased tooted',
 	'noProducts' => 'Tooteid ei ole',
-	'productReviews' => 'Toote ülevaated',
+	'productReviews' => 'Toote hinnangud',
 	'averageRating' => 'Keskmine hinnang',
-    'addReview' => 'Lisa ülevaade',
-	'topFresh' => 'Uued värsked',
+    'addReview' => 'Lisa hinnang',
+	'topFresh' => 'Värskelt lisatud',
 	'product' => 'Toode',
 	'color' => 'Välimus',
 	'smell' => 'Lõhn',
@@ -53,8 +53,8 @@ $lang = array (
 	'description' => 'Kirjeldus',
 	'rating' => 'Hinnang',
 	'notInList' => 'Ei leidnud toodet nimekirjast?',
-	'latestReviews' => 'Viimased ülevaated',
-	'allReviews' => 'Kõik ülevaated',
+	'latestReviews' => 'Viimased hinnangud',
+	'allReviews' => 'Kõik hinnangud',
 	'picture' => 'Pilt (PNG)',
 		
 	
@@ -72,13 +72,12 @@ $lang = array (
 	'rootbeer' => 'Kali',
 	
 	'donate' => 'Anneta!',
-	'donateDetails' => '<p>Kui Sa hindad minu tehtud tööd, siis palun vajuta anneta nuppu! Äitähh!</p>',
-	/* 'aboutusDetails' => '<p>I am software architect/developer at Tieto Estonia AS who also enjoys a occasional beer or two.</p><p>I created this site to store all my findings in a newbish way.</p>', */
+	'donateDetails' => '<p>Kui Sa hindad minu tehtud tööd, siis palun vajuta <b>Donate</b> nuppu! Äitähh!</p>',
 	'help' => 'Abi',
-	'helpDetails' => '<p>&raquo; To enter review, go to <b>New Review</b> page and find the product You just tasted</p><p>&raquo; If You do not find the product from our list, go to <b>New Product</b> page and add it Yourself!',
+	'helpDetails' => '<p>&raquo; Hinnangu sisestamiseks mine <b>Uus hinnang</b> lehele ja vali nimekirjast toode, mida äsja maitsesid!</p><p>&raquo; Kui Sa aga ei leia seda toodet nimekirjast, siis mine lehele <b>Uus toode</b> ja lisa see ise!',
 	'contactInfo' => 'Kontaktandmed',
-	'contactDetails' => 'Kui Sul on ettepanekuid, teateid vigadest,või muid märkusi, palun võtke minuga ühendust aadressil: markuskarileet@hotmail.com',	
-	'downloadDisclaimer' => 'Lehekülje stiil alla laetud',	
+	'contactDetails' => 'Kui Sul on ettepanekuid, teateid vigadest,või muid märkusi, palun võta minuga ühendust aadressil: markuskarileet@hotmail.com',	
+	'downloadDisclaimer' => 'CSS ja HTML: ',	
 	
 	/* technical messages */
 	'insertSuccess' => 'Lisamine edukas!',
@@ -99,6 +98,31 @@ $lang = array (
 	'tummine' => 'Tummine',
 	'light' => 'Hele',
 	'dark' => 'Tume',
-	'golden' => 'Kuldne'			
+	'golden' => 'Kuldne',			
 			
+    'red' => 'Punane', 
+    'clear' => 'Selge',
+    'hazy' => 'Hägune', 
+    'foamy' => 'Vahutav', 
+    'lessFoamy' => 'Vähene vaht', 
+    'tightFoam' => 'Tihe vaht', 
+    'cafe' => 'Kohvi', 
+    'chocolate' => 'Šokolaad', 
+    'spicy' => 'Vürtsine', 
+    'greenBottle' => 'Roheline pudel',
+    
+    'weak' => 'Nõrk', 
+    'strong' => 'Tugev',
+    'caramel' => 'Karamelline', 
+    'orange' => 'Apelsin',
+    
+    'lightTaste' => 'Vähese maitsega', 
+    'refreshing' => 'Karastav', 
+    'lastingTaste' => 'Maitse kestab', 
+    'dry' => 'Kuiv', 
+    'wellBalanced' => 'Tasakaalukas', 
+    'wheaty' => 'Leivane', 
+    'heat' => 'Viha', 
+    'versatile' => 'Mitmekülgne', 
+    'watery' => 'Vesine'
 );
