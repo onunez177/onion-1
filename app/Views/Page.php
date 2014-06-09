@@ -87,6 +87,9 @@ abstract class Page {
 			case \Enum\Language::Eng:
 				include 'i18n/en.php';
 				break;
+			case \Enum\Language::Est:
+				include 'i18n/et.php';
+				break;
 			default:
 				include 'i18n/en.php';
 				break;
