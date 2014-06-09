@@ -44,20 +44,23 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 <header class="center clearfix" id=""><a href="{$smarty.const.WEBROOT}/?action=setType&type=1"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo.jpg" alt="{$lang['drinkType1']}{$lang['planet']}" /></a><a href="{$smarty.const.WEBROOT}/?action=setType&type=2"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo2.jpg" alt="{$lang['drinkType2']}{$lang['planet']}" /></a>
+  <div style="float:right"><a href="{$smarty.const.WEBROOT}/?L=et">est</a> | <a href="{$smarty.const.WEBROOT}/?L=en">eng</a></div>
   <nav class="fright">
     <ul>
       <li><a href="{$smarty.const.WEBROOT}/?action=setType&type={$smarty.session.type}" {if $smarty.get.object eq ''}class="navactive"{/if}>{$lang['home']}</a></li>
-      <li><a href="{$smarty.const.WEBROOT}/review/list/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'list'}class="navactive"{/if}>{$lang['reviews']}</a></li>
+      
     </ul>
     <ul>
-      <li><a href="{$smarty.const.WEBROOT}/product/list/" {if $smarty.get.object eq 'product' && $smarty.get.method eq 'fresh'}class="navactive"{/if}>{$lang['products']}</a></li>
-      <li><a href="{$smarty.const.WEBROOT}/review/add/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'add'}class="navactive"{/if}>{$lang['newreview']}</a></li>
-    </ul>
-    <ul>
+      <li><a href="{$smarty.const.WEBROOT}/product/list/" {if $smarty.get.object eq 'product' && $smarty.get.method eq 'list'}class="navactive"{/if}>{$lang['products']}</a></li>
       <li><a href="{$smarty.const.WEBROOT}/product/add/" {if $smarty.get.object eq 'product' && $smarty.get.method eq 'add'}class="navactive"{/if}>{$lang['newproduct']}</a></li>
+    </ul>
+    <ul>
+    <li><a href="{$smarty.const.WEBROOT}/review/list/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'list'}class="navactive"{/if}>{$lang['reviews']}</a></li>
+    <li><a href="{$smarty.const.WEBROOT}/review/add/" {if $smarty.get.object eq 'review' && $smarty.get.method eq 'add'}class="navactive"{/if}>{$lang['newreview']}</a></li>
       <!-- <li><a href="links.html" {if $smarty.get.object eq 'links'}class="navactive"{/if}>{$lang['links']}</a></li> -->
     </ul>
   </nav>
+  
 </header>
 <div class="main center">
   <section class="part clearfix">
