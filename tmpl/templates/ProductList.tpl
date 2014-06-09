@@ -1,6 +1,6 @@
 <header class="title clearfix">
 	<p class="fleft"></p>
-    <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright"></a>
+    <a href="{$smarty.const.WEBROOT}/product/add" class="arrow more fright">{$lang['newproduct']}</a>
 </header>
 
 <h1 style="text-transform: uppercase;">{$lang['topFresh']}</h1>
