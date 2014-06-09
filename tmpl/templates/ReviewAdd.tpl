@@ -35,12 +35,9 @@
             <textarea name="color" cols="40" rows="6" required class="required"></textarea>
             </div>
             <div id="c_cb_inp" style="display:none">
-             <input type="checkbox" name="color_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
-             <input type="checkbox" name="color_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
-             <input type="checkbox" name="color_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
-             <input type="checkbox" name="color_cb[]" value="{$lang['light']}"><b>{$lang['light']}</b><br>
-             <input type="checkbox" name="color_cb[]" value="{$lang['dark']}"><b>{$lang['dark']}</b><br>
-             <input type="checkbox" name="color_cb[]" value="{$lang['golden']}"><b>{$lang['golden']}</b><br>
+            {foreach from=$appearanceHW item=word}
+             <input type="checkbox" name="color_cb[]" value="{$lang[$word]}"><b>{$lang[$word]}</b><br>
+            {/foreach}
             </div>
         </li>
         <li>
@@ -49,13 +46,9 @@
             <textarea name="smell" cols="40" rows="6" required class="required"></textarea>
             </div>
             <div id="s_cb_inp" style="display:none">
-             <input type="checkbox" name="smell_cb[]" value="{$lang['bittery']}"><b>{$lang['bittery']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['tasteless']}"><b>{$lang['tasteless']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['mellow']}"><b>{$lang['mellow']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['tasteful']}"><b>{$lang['tasteful']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
-             <input type="checkbox" name="smell_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
+             {foreach from=$aromaHW item=word}
+             <input type="checkbox" name="smell_cb[]" value="{$lang[$word]}"><b>{$lang[$word]}</b><br>
+            {/foreach}
             </div>
         </li>
         <li>
@@ -64,13 +57,9 @@
             <textarea name="taste" cols="40" rows="6" required class="required"></textarea>
             </div>
             <div id="t_cb_inp" style="display:none">
-             <input type="checkbox" name="taste_cb[]" value="{$lang['bittery']}"><b>{$lang['bittery']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['tasteless']}"><b>{$lang['tasteless']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['mellow']}"><b>{$lang['mellow']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['tasteful']}"><b>{$lang['tasteful']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['hopy']}"><b>{$lang['hopy']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['sweet']}"><b>{$lang['sweet']}</b><br>
-             <input type="checkbox" name="taste_cb[]" value="{$lang['tummine']}"><b>{$lang['tummine']}</b><br>
+             {foreach from=$tasteHW item=word}
+             <input type="checkbox" name="taste_cb[]" value="{$lang[$word]}"><b>{$lang[$word]}</b><br>
+            {/foreach}
             </div>
         </li>
         <li>
