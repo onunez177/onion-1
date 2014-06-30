@@ -6,24 +6,18 @@
  * @var array
  */
 $lang = array (
-	'choose' => 'Milline on Su lemmikmürk, mu sõber?',
+	'choose' => 'Kellele ema, kellele tütar?',
 	'drinkType1' => 'Beer',
 	'drinkType2' => 'Wine',
 	'planet' => 'Planet',
-	'welcomeTo' => 'Teretulemast lehele',	
-	'introtext' => '<p>Lehekülg sai loodud mõttega kirja panna erinevate jookide maitsed, 
-		mida ma alates 2014 aasta esimesest poolest proovinud olen. Lisaks on teine põhjus ka: soovisin proovida enda
-		tehtud lihtsat ORMi (Object Relational Mapping). Niisiis, siin see on: lehekülg mis on tehtud kasutades
-		Onion ORMi ( https://github.com/Shmarkus/onion )! Kindlasti vaadake lähtekoodi ning kasutage seda ka oma 
-		lehekülgedel..</p><p>..või</p><p>..kui Sul on mõnda hiljutist õlle/veini maitsmist olnud, siis pane see
-		siia kirja! Kui seda toodet veel ei ole, saab selle lisada uue toote menüü alt</p><p> Seda kõike SAAKS ka
-		ratebeer.com lehel teha, kuid SEE oleks liiga meinstriim ;)</p>',
+	'welcome' => 'Tšau!',	
+	'introtext' => 'Kui kõik mida Sa teha soovid on kasutajaks registreerimata oma lemmikjooke kolmes kategoorias (välimus, lõhn ja maitse) iseloomustada kasutades selleks ühte hinnet, siis oled jõudnud õigesse kohta! BeerPlanet pakub kiiret võimalust uue joogi või arvustuse lisamiseks.',
 	/* menu items */
 	'home' => 'Avaleht',
 	'reviews' => 'Hinnangud',
-	'products' => 'Tooted',
+	'products' => 'Joogid',
 	'newreview' => 'Uus hinnang',
-	'newproduct' => 'Uus toode',
+	'newproduct' => 'Uus jook',
 	'links' => 'Lingid',	
 	'aboutSite' => 'Leheküljest',
 		
@@ -39,10 +33,10 @@ $lang = array (
 	'user' => 'Kasutaja',
 	'cancel' => 'Tühista',
 	'save' => 'Salvesta',
-	'allProducts' => 'Kõik tooted',
-	'latestProducts' => 'Viimased tooted',
-	'noProducts' => 'Tooteid ei ole',
-	'productReviews' => 'Toote hinnangud',
+	'allProducts' => 'Kõik joogid',
+	'latestProducts' => 'Viimased joogid',
+	'noProducts' => 'Jooki ei ole',
+	'productReviews' => 'Joogi hinnangud',
 	'averageRating' => 'Keskmine hinnang',
     'addReview' => 'Lisa hinnang',
 	'topFresh' => 'Värskelt lisatud',
