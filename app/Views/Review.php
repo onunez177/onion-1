@@ -101,6 +101,11 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 				$array['name'] = $p->getName();
 				$this->_smarty->assign('form', $array);
 				$this->_content = $this->_smarty->fetch('ReviewView.tpl');
+				
+				$this->_openGraph->setTitle($p->getManufactor() . ' \'' . $p->getName() . '\' (' . $review->getRating() . '/10)');
+				$this->_openGraph->setDescription($review->getDescription());
+				$this->_openGraph->setUrl(LIKEURL . '/review/details/' . $review->getId());
+				$this->_openGraph->setImage(LIKEURL . '/uploads/' . $this->getImgName($p));
 			}
 		} else {
 			$this->setMessage(
@@ -145,6 +150,11 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	    foreach ($fresh as $k => $itm) {
 	        $imgnames[$itm->getProductId()] = $this->getImgName($p[$itm->getProductId()]);
 	    }
+
+	    $this->_openGraph->setTitle($this->_translation['reviews']);
+	    $this->_openGraph->setUrl(LIKEURL . '/review/list/');
+	    $this->_openGraph->setImage(LIKEURL . '/uploads/noimage.png');
+	    
 	    $this->_smarty->assign('fresh', $fresh);
 	    $this->_smarty->assign('products', $p);
 	    $this->_smarty->assign('images', $imgnames);
@@ -163,6 +173,10 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	    $this->_smarty->assign('tasteHW', $this->_getTasteHotwords());
 	    $this->_smarty->assign('appearanceHW', $this->_getAppearanceHotwords());
 	    $this->_smarty->assign('aromaHW', $this->_getAromaHotwords());
+	    
+	    $this->_openGraph->setTitle($this->_translation['newreview']);
+	    $this->_openGraph->setUrl(LIKEURL . '/review/add');
+	    $this->_openGraph->setImage(LIKEURL . '/uploads/noimage.png');
 	    
 	}
 	

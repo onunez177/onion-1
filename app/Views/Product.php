@@ -88,6 +88,11 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$this->_smarty->assign('entities', $entities);
 		$this->_content = $this->_smarty->fetch('ProductAdd.tpl');
 		$this->setMessage($message);
+		
+		$this->_openGraph->setTitle($this->_translation['newproduct']);
+		$this->_openGraph->setUrl(LIKEURL . '/product/add');
+		$this->_openGraph->setImage(LIKEURL . '/uploads/noimage.png');
+		
 		$this->display();
 	}
 	
@@ -125,15 +130,23 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 				//add reviews to product
 				$reviews = $this->_service->getProductReviews($id);
 				//add average to product
-				$this->_smarty->assign(
-					'average', 
-					$this->_service->calculateAverageScore($reviews)
-				);
+				$average = $this->_service->calculateAverageScore($reviews);
+				$this->_smarty->assign('average', $average);
 				$imgName = $this->getImgName($product);
 				$this->_smarty->assign('reviews', $reviews);
 				$this->_smarty->assign('form', $array);
 				$this->_smarty->assign('encodedName', $imgName);
 				$this->_content = $this->_smarty->fetch('ProductView.tpl');
+				
+				$this->_openGraph->setTitle($product->getManufactor() . ' \'' . $product->getName() . '\' ' . '(' . $average . '/10)');
+				$this->_openGraph->setDescription(
+			        $this->_translation['type'] . ': ' . $array['typeId'] . ', ' 
+		          . $this->_translation['subtype'] . ': ' . $array['subTypeId'] . ', '
+		          . $this->_translation['alc'] . ': '. sprintf('%.1f %%', $product->getAlc()) . ', '
+				  . $this->_translation['origin'] . ': ' . $product->getOrigin()      
+		        );
+				$this->_openGraph->setUrl(LIKEURL . '/product/details/' . $product->getId());
+				$this->_openGraph->setImage(LIKEURL . '/uploads/' . $imgName);
 			}
 		} else {
 			$this->setMessage(
@@ -173,6 +186,11 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 		$this->setMessage($message);
 		
 		$this->_content = $this->_smarty->fetch('ProductList.tpl');
+		
+		$this->_openGraph->setTitle($this->_translation['products']);
+		$this->_openGraph->setUrl(LIKEURL . '/product/list/');
+		$this->_openGraph->setImage(LIKEURL . '/uploads/noimage.png');
+		
 		$this->display();
 	}
 

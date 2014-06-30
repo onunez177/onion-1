@@ -52,6 +52,7 @@ class Sample extends BeerPlanet implements \Interfaces\Presentable {
 		$this->_smarty->assign('messages', $this->_messages);
 		//assign content object to page
 		$this->_smarty->assign('content', $this->_content);
+		$this->_smarty->assign('openGraph', $this->_openGraph);
 		//display index page
 		$this->_smarty->display('chooseSide.tpl');
 	}
