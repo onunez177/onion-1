@@ -14,15 +14,30 @@ namespace Views;
  * @link       -
  */
 abstract class BeerPlanet extends Page {
+    
 	/**
 	 * Variable to store drink type user chose on the first page
 	 * @var int
 	 */
 	protected $_drinkType;
+
+	/**
+	 * Open graph data for page
+	 * @var \Entities\OpenGraph
+	 */
+	protected $_openGraph;
 	
 	protected function _setUp() {
 		$this->_setDrinkType();
 		parent::_setUp();
+		$this->_openGraph = new \Entities\OpenGraph();
+		$this->_openGraph->setType('drink');
+		$this->_openGraph->setDescription($this->_translation['introtext']);
+		$key = 'drinkType' . $this->_drinkType;
+		$this->_openGraph->setSiteName($this->_translation[$key] . 'Planet');
+		$this->_openGraph->setUrl(LIKEURL);
+		$this->_openGraph->setTitle($this->_translation[$key] . 'Planet');
+		$this->_openGraph->setImage(LIKEURL . '/lib/design/images/logo.jpg');
 	}
 	
 	/**
@@ -80,5 +95,43 @@ abstract class BeerPlanet extends Page {
 	 */
 	public function imageExists($product) {
 		return !file_exists($this->getImgName($product));
+	}
+	
+	public function display() {
+	    //add opengraph to page for facebook statistics
+	    $this->_smarty->assign('openGraph', $this->_openGraph);
+	    parent::display();
+	}
+	
+	abstract function detailsView($id, $message = false);
+	
+	/**
+	 * Method for storing user input from HTML form. After insert, user is
+	 * returned to detailsView() with appropriate message about insertion
+	 * @param var[] $post HTTP POST
+	 */
+	public function addAction($post) {
+	    $form = new \Forms\Form($this->_entity);
+	    $obj = $form->formToObject($post);
+	    $id = 0;
+	    try {
+	        if ($id = $this->_service->insert($obj)) {
+	            $message = new \Entities\Message(
+	                    \Enum\MessageType::Success,
+	                    $this->_translation['insertSuccess']
+	            );
+	        } else {
+	            $message = new \Entities\Message(
+	                    \Enum\MessageType::Warning,
+	                    $this->_translation['insertFail']
+	            );
+	        }
+	    } catch (\Exception $e) {
+	        $message = new \Entities\Message(
+	                \Enum\MessageType::Error,
+	                $this->_translation['internalError']
+	        );
+	    }
+	    $this->detailsView($id, $message);
 	}
 }
