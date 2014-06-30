@@ -3,9 +3,15 @@
     <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">{$lang['allReviews']}</a>
 </header>
 <div id="rating"></div>
-<h1 style="text-transform: uppercase;">{$form.manufactor} <a href="{$smarty.const.WEBROOT}/product/details/{$form.productId}" style="white-space: nowrap;">{$form.name}</a></h1>
 
-<section class="part clearfix">
+<div class="myH1container">
+    <div class="myH1">{$form.manufactor} <a href="{$smarty.const.WEBROOT}/product/details/{$form.productId}" style="white-space: nowrap;">{$form.name}</a></div>
+</div>
+<div style="float:right">
+    <a href="{$smarty.const.WEBROOT}/review/addUnder/{$form.productId}" class="button">{$lang['addReview']}</a>
+</div>
+
+<section class="part clearfix" style="clear:both">
 <article class="column4in mright services">
 	<h5>{$lang['color']}</h5>
 	<div class="sepmini"></div>

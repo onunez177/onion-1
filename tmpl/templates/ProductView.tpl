@@ -3,9 +3,14 @@
     <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
 </header>
 
-<h1 style="text-transform: uppercase;">{$form.name}</h1>
+<div class="myH1container">
+    <div class="myH1">{$form.name}</div>
+</div>
+<div style="float:right">
+    <a href="{$smarty.const.WEBROOT}/review/addUnder/{$form.id}" class="button">{$lang['addReview']}</a>
+</div>
 
-<table cellspacing="15">
+<table cellspacing="15" style="clear:both">
 	<tr><td>
 	<div class="yoxview" id="thumbnails">
 	    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75px" height="150px" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
@@ -39,7 +44,6 @@
 	{/literal}
 	</script>
 	</td>
-	<td><a href="{$smarty.const.WEBROOT}/review/addUnder/{$form.id}" class="button">{$lang['addReview']}</a></td>
 	</tr>
 </table>
 <br><br>
