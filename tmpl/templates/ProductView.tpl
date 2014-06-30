@@ -1,5 +1,5 @@
 <header class="title clearfix">
-	<p class="fleft"></p>
+	<div class="fb-share-button" style="float:left" data-href="{$smarty.const.LIKEURL}/product/details/{$form.id}" data-type="button"></div>
     <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
 </header>
 

@@ -3,6 +3,22 @@
 <head>
 <title>{$lang['drinkType1']}{$lang['planet']}</title>
 <meta charset="UTF-8">
+<meta property="og:type" content="{$openGraph->getType()}"/>
+<meta property="og:site_name" content="{$openGraph->getSiteName()}"/>
+<meta property="fb:admins" content="100000128748523" />
+{if $openGraph->getTitle() neq ""}
+<meta property="og:title" content="{$openGraph->getTitle()}"/>
+{/if}
+{if $openGraph->getDescription() neq ""}
+<meta property="og:description" content="{$openGraph->getDescription()}"/>
+{/if}
+{if $openGraph->getUrl() neq ""}
+<meta property="og:url" content="{$openGraph->getUrl()}"/>
+{/if}
+{if $openGraph->getImage() neq ""}
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image" content="{$openGraph->getImage()}"/>
+{/if}
 <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/beer.css">
 <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/style.css">
 {include file="GATracker.tpl"}
