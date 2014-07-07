@@ -345,3 +345,18 @@ label.error { color: #D84A38; margin: 10px 0 0 5px; font-weight: normal; font-st
 	width:35px;
 	height:35px;
 }
+
+.myH1 {
+    font-size: 50px;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: #555;
+    margin: 0 0 30px;
+    font-weight: normal;
+}
+
+.myH1container {
+    float:left;
+    width:843px;
+}
