@@ -16,6 +16,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `onion`.`store`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `onion`.`store` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `onion`.`subtype`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `onion`.`subType` (
@@ -61,6 +71,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `onion`.`productStore`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `onion`.`productStore` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `productId` INT NOT NULL DEFAULT 0,
+  `storeId` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `fk_product_store_product_idx` (`productId` ASC),
+  INDEX `fk_product_store_store_idx` (`storeId` ASC),
+  CONSTRAINT `fk_product_store_product`
+    FOREIGN KEY (`productId`)
+    REFERENCES `onion`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_store_store`
+    FOREIGN KEY (`storeId`)
+    REFERENCES `onion`.`store` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `onion`.`review`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `onion`.`review` (
@@ -95,3 +128,4 @@ INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'red');
 INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'white');
 INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 2, 'rose');
 INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 1, 'ale');
+INSERT INTO `onion`.`subType` (id, typeId, name)  VALUES (null, 1, 'stout');
