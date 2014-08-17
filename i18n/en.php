@@ -64,6 +64,7 @@ $lang = array (
 	'mead' => 'Mead',
 	'sparkling' => 'Sparkling',
 	'rootbeer' => 'Root beer',
+	'stout' => 'Stout',
 	
 	'donate' => 'Donate!',
 	'donateDetails' => '<p>Please click the donate button below, if You appriciate the work I have done! Thank You!</p>',
