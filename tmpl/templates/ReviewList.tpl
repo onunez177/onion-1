@@ -10,7 +10,7 @@
 <figure class="work" style="margin-right:20px">
     <div>   
         <a href="{$smarty.const.WEBROOT}/review/details/{$entity->getId()}">
-            <img src="{$smarty.const.WEBROOT}/uploads/thumb/{$images[$entity->getProductId()]}" width="75px" height="150px" alt="{$products[$productId]}" title="{$products[$productId]}" />
+            <img src="{$smarty.const.WEBROOT}/uploads/thumb/{$images[$entity->getProductId()]}" width="75" height="150" alt="{$products[$productId]}" title="{$products[$productId]}" />
         </a>
     </div>
     <figcaption> 
@@ -54,7 +54,7 @@ var id = '{$entity->getId()}';
 	            {foreach from=$entities item=review}
 	                <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/review/details/{$review->getId()}'">
 	                {assign var=productId value=$review->getProductId()}
-	                    <td>{$products[$productId]}</td>
+	                    <td><a href="{$smarty.const.WEBROOT}/review/details/{$review->getId()}">{$products[$productId]}</a></td>
 	                    <td>{$review->getUser()}</td>
 	                    <td>{$review->getRating()}</td>
 	                </tr>
