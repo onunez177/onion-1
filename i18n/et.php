@@ -119,5 +119,7 @@ $lang = array (
     'wheaty' => 'Leivane', 
     'heat' => 'Viha', 
     'versatile' => 'Mitmekülgne', 
-    'watery' => 'Vesine'
+    'watery' => 'Vesine',
+    'smoky' => 'Suitsune',
+    'acrid' => 'Kibe'
 );

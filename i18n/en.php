@@ -120,5 +120,7 @@ $lang = array (
 	'wheaty' => 'Wheaty',
 	'heat' => 'Heat',
 	'versatile' => 'Versatile',
-	'watery' => 'Watery'
+	'watery' => 'Watery',
+	'smoky' => 'Smoky',
+	'acrid' => 'Acrid'
 );
