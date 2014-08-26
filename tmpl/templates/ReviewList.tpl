@@ -52,7 +52,7 @@ var id = '{$entity->getId()}';
 	        </thead>
 	        <tbody>
 	            {foreach from=$entities item=review}
-	                <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/review/details/{$review->getId()}'">
+	                <tr>
 	                {assign var=productId value=$review->getProductId()}
 	                    <td><a href="{$smarty.const.WEBROOT}/review/details/{$review->getId()}">{$products[$productId]}</a></td>
 	                    <td>{$review->getUser()}</td>
