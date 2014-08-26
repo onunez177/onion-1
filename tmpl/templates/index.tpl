@@ -36,9 +36,9 @@
     var prefix = '{$smarty.const.WEBROOT}';
   </script>
   
-  <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery-1.11.0.min.js"></script>
+  <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery-1.11.1.min.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery-ui-1.10.4.custom.min.js"></script>
-  <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.dataTables-1.9.4.js"></script>
+  <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.dataTables-1.10.2.min.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/yoxview-init.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/js.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.raty-2.5.2.min.js"></script>
@@ -46,6 +46,7 @@
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.browser.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.select-to-autocomplete.js"></script>
   {include file="GATracker.tpl"}
+  
 </head>
 
 <body>
@@ -60,11 +61,11 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-<header class="center clearfix" id=""><a href="{$smarty.const.WEBROOT}/?action=setType&type=1"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo.jpg" alt="{$lang['drinkType1']}{$lang['planet']}" /></a><a href="{$smarty.const.WEBROOT}/?action=setType&type=2"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo2.jpg" alt="{$lang['drinkType2']}{$lang['planet']}" /></a>
+<header class="center clearfix"><a href="{$smarty.const.WEBROOT}/?action=setType&amp;type=1"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo.jpg" alt="{$lang['drinkType1']}{$lang['planet']}" /></a><a href="{$smarty.const.WEBROOT}/?action=setType&amp;type=2"><img src="{$smarty.const.WEBROOT}/lib/design/images/logo2.jpg" alt="{$lang['drinkType2']}{$lang['planet']}" /></a>
   <div style="float:right"><a href="{$smarty.const.WEBROOT}/?L=et">est</a> | <a href="{$smarty.const.WEBROOT}/?L=en">eng</a></div>
   <nav class="fright">
     <ul>
-      <li><a href="{$smarty.const.WEBROOT}/?action=setType&type={$smarty.session.type}" {if $smarty.get.object eq ''}class="navactive"{/if}>{$lang['home']}</a></li>
+      <li><a href="{$smarty.const.WEBROOT}/?action=setType&amp;type={$smarty.session.type}" {if $smarty.get.object eq ''}class="navactive"{/if}>{$lang['home']}</a></li>
       
     </ul>
     <ul>
@@ -101,8 +102,8 @@
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align:center">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="5DNVC634SR3NJ">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
       </form>
     </article>
     <article class="column3 mright ">
@@ -120,5 +121,5 @@
 <!--[if (gte IE 6)&(lte IE 8)]>
 <script src="js/selectivizr.js"></script>
 <![endif]-->
-<div align=center>{$lang['downloadDisclaimer']} <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
+<div>{$lang['downloadDisclaimer']} <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
 </html>
