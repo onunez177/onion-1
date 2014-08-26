@@ -219,6 +219,6 @@ class Review extends BeerPlanet implements \Interfaces\Presentable {
 	}
 	
 	private function _getTasteHotwords() {
-	    return array('bitter', 'lightTaste', 'mellow', 'tasteful', 'sweet', 'refreshing', 'lastingTaste', 'dry', 'wellBalanced', 'wheaty', 'caramel', 'heat', 'versatile', 'watery', 'hopy');
+	    return array('bitter', 'acrid', 'lightTaste', 'mellow', 'tasteful', 'sweet', 'refreshing', 'lastingTaste', 'dry', 'wellBalanced', 'wheaty', 'caramel', 'heat', 'versatile', 'watery', 'hopy', 'smoky');
 	}
 }
