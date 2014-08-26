@@ -105,8 +105,8 @@ nav a, menu a { text-decoration: none; color: #666; }
 .slide figcaption { position: absolute; background: white; height: auto; min-height: 45px; width: 190px; padding: 10px; top: 30px; right: 0; }
     .slide figcaption div { text-align: right; display: block; border-right: 1px solid #DDD; padding: 3px 20px 0 0; margin: auto 50px auto 0; }
         .slide figcaption div p { margin: 0 }
-.prev { position: absolute; top: 55px; right: 35px; width: 20px; height: 10px; z-index: 10; display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; text-align: left; direction: ltr; background: url(../img/left.png) center no-repeat; }
-.next { position: absolute; top: 55px; right: 5px; width: 20px; height: 10px; z-index: 10; display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; text-align: left; direction: ltr; background: url(../img/arrow.png) center no-repeat; }
+.prev { position: absolute; top: 55px; right: 35px; width: 20px; height: 10px; z-index: 10; display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; text-align: left; direction: ltr; background: url(../images/left.png) center no-repeat; }
+.next { padding-left:10px; }
 /*---------*/
 .services { border-top: 1px solid #DDD; padding-top: 10px; }
     .services p { margin: 0 }
@@ -359,4 +359,23 @@ label.error { color: #D84A38; margin: 10px 0 0 5px; font-weight: normal; font-st
 .myH1container {
     float:left;
     width:843px;
+}
+.listCellWidth {
+	width: 20%;
+}
+.reviewsCellWidth {
+	width: 30%;
+}
+
+.productDetailsTable {
+	clear:both;
+}
+
+.productDetailsTable td {
+	padding: 5px;
+}
+.descriptionSection {
+	float:left;
+	width: 800px;
+	padding-left: 10px;
 }
