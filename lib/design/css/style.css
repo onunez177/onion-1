@@ -379,3 +379,6 @@ label.error { color: #D84A38; margin: 10px 0 0 5px; font-weight: normal; font-st
 	width: 800px;
 	padding-left: 10px;
 }
+tr:hover a {
+    color:#fff;
+}
