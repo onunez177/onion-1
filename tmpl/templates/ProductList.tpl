@@ -9,7 +9,7 @@
 <figure class="work">
 	<div> 	
 		<a href="{$smarty.const.WEBROOT}/product/details/{$entity->getId()}">
-      		<img src="{$smarty.const.WEBROOT}/uploads/thumb/{$images[$entity->getId()]}" width="75px" height="150px" alt="{$entity->getName()}" title="{$entity->getName()}" />
+      		<img src="{$smarty.const.WEBROOT}/uploads/thumb/{$images[$entity->getId()]}" width="75" height="150" alt="{$entity->getName()}" title="{$entity->getName()}" />
       	</a>
 	</div>
     <figcaption> 
@@ -32,11 +32,11 @@
     {if $entities}
         <thead>
             <tr>
-                <th width="20%">{$lang['name']}</th>
-                <th width="20%">{$lang['manufactor']}</th>
-                <th width="20%">{$lang['averageRating']}</th>
-                <th width="20%">{$lang['subtype']}</th>
-                <th width="20%">{$lang['alc']}</th>
+                <th class="listCellWidth">{$lang['name']}</th>
+                <th class="listCellWidth">{$lang['manufactor']}</th>
+                <th class="listCellWidth">{$lang['averageRating']}</th>
+                <th class="listCellWidth">{$lang['subtype']}</th>
+                <th class="listCellWidth">{$lang['alc']}</th>
             </tr>
         </thead>
         <tbody>
@@ -45,8 +45,8 @@
                 {assign var=subTypeId value=$product->getSubTypeId()}
                 {* get the specific element, so translation can be fetched *}
                 {assign var=subTypeName value=$subtypes[$subTypeId]->getName()}
-                <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/product/details/{$product->getId()}'">
-                    <td>{$product->getName()}</td>
+                <tr>
+                    <td><a href="{$smarty.const.WEBROOT}/product/details/{$product->getId()}">{$product->getName()}</a></td>
                     <td>{$product->getManufactor()}</td>
                     <td>{$ratings[$product->getId()]}</td>
                     <td>{$lang[$subTypeName]}</td>
