@@ -10,10 +10,10 @@
     <a href="{$smarty.const.WEBROOT}/review/addUnder/{$form.id}" class="button">{$lang['addReview']}</a>
 </div>
 
-<table cellspacing="15" style="clear:both">
+<table class="productDetailsTable">
 	<tr><td>
 	<div class="yoxview" id="thumbnails">
-	    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75px" height="150px" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
+	    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75" height="150" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
 	</div>
 	</td><td>
 	<div id="rating"></div>
@@ -55,19 +55,19 @@
     <table id="contentTable">
         <thead>
             <tr>
-                <th>{$lang['color']}</th>
-                <th>{$lang['smell']}</th>
-                <th>{$lang['taste']}</th>
+                <th class="reviewsCellWidth">{$lang['color']}</th>
+                <th class="reviewsCellWidth">{$lang['smell']}</th>
+                <th class="reviewsCellWidth">{$lang['taste']}</th>
                 <th>{$lang['rating']}</th>
             </tr>
         </thead> 
         <tbody>
             {foreach from=$reviews item=review}
                 <tr onclick="document.location.href = '{$smarty.const.WEBROOT}/review/details/{$review->getId()}'">
-                    <td width="30%">{$review->getColor()}</td>
-                    <td width="30%">{$review->getSmell()}</td>
-                    <td width="30%">{$review->getTaste()}</td>
-                    <td width="10%">{$review->getRating()}</td>
+                    <td>{$review->getColor()}</td>
+                    <td>{$review->getSmell()}</td>
+                    <td>{$review->getTaste()}</td>
+                    <td>{$review->getRating()}</td>
                 </tr>
             {/foreach}
         </tbody>
