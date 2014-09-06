@@ -21,18 +21,18 @@
 	    {else}
 	    <li>
 	        <label for="product">{$lang['product']}</label>
-	        <input type="hidden" name="productId" readonly required class="required" value="{$product->getId()}">
+	        <input type="hidden" name="productId" id="product" readonly required class="required" value="{$product->getId()}">
 	        <div name="product">{$product->getName()}</div>
 	    </li>
 	    {/if}
         <li>
             <label for="user">{$lang['user']}</label>
-            <input type="text" name="user" required class="required" >
+            <input type="text" name="user" id="user" required class="required" >
         </li>
         <li>
             <label for="color" onclick="$('#c_inp').toggle();$('#c_cb_inp').toggle()">{$lang['color']}</label>
             <div id="c_inp">
-            <textarea name="color" cols="40" rows="6" required class="required"></textarea>
+            <textarea name="color" cols="40" rows="6" id="color" required class="required"></textarea>
             </div>
             <div id="c_cb_inp" style="display:none">
             {foreach from=$appearanceHW item=word}
@@ -43,7 +43,7 @@
         <li>
             <label for="smell" onclick="$('#s_inp').toggle();$('#s_cb_inp').toggle()">{$lang['smell']}</label>
             <div id="s_inp">
-            <textarea name="smell" cols="40" rows="6" required class="required"></textarea>
+            <textarea name="smell" cols="40" rows="6" id="smell" required class="required"></textarea>
             </div>
             <div id="s_cb_inp" style="display:none">
              {foreach from=$aromaHW item=word}
@@ -54,7 +54,7 @@
         <li>
             <label for="taste" onclick="$('#t_inp').toggle();$('#t_cb_inp').toggle()">{$lang['taste']}</label>
             <div id="t_inp">
-            <textarea name="taste" cols="40" rows="6" required class="required"></textarea>
+            <textarea name="taste" cols="40" rows="6" id="taste" required class="required"></textarea>
             </div>
             <div id="t_cb_inp" style="display:none">
              {foreach from=$tasteHW item=word}
@@ -64,11 +64,11 @@
         </li>
         <li>
             <label for="description">{$lang['description']}</label>
-            <textarea name="description" cols="40" rows="6" required class="required"></textarea>
+            <textarea name="description" cols="40" rows="6" id="description" required class="required"></textarea>
         </li>
         <li>
-            <label for="rating">{$lang['rating']}</label>
-            <div id="rating" name="rating"></div>
+            <label>{$lang['rating']}</label>
+            <div id="rating"></div>
         </li>
     </ul>
 		<a href="{$smarty.const.WEBROOT}/product/add" class="button">{$lang['cancel']}</a>
