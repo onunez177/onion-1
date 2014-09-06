@@ -117,6 +117,9 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 				$array = $form->objectToForm($product);
 				$orm = new \Services\ORM();
 				$type = new \Entities\Type();
+				$storesService = new \Services\Store();
+				$stores = $storesService->getStoresByProductId($id);
+				$storesJson = $this->_service->objectsToJson($stores);
 				$type->setId($product->getTypeId());
 				$t = $orm->select($type);
 				//override default typeId
@@ -134,6 +137,7 @@ class Product extends BeerPlanet implements \Interfaces\Presentable {
 				$this->_smarty->assign('average', $average);
 				$imgName = $this->getImgName($product);
 				$this->_smarty->assign('reviews', $reviews);
+				$this->_smarty->assign('stores', $storesJson);
 				$this->_smarty->assign('form', $array);
 				$this->_smarty->assign('encodedName', $imgName);
 				$this->_content = $this->_smarty->fetch('ProductView.tpl');

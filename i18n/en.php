@@ -50,7 +50,7 @@ $lang = array (
 	'latestReviews' => 'Latest Reviews',
 	'allReviews' => 'List of all reviews',
 	'picture' => 'Image (PNG)',
-		
+	'stores' => 'Stores',
 	
 	/* Product types and subtypes */
 	'beer' => 'Beer',

@@ -44,6 +44,10 @@
 	{/literal}
 	</script>
 	</td>
+	<td>
+	   <h2>{$lang['stores']}</h2>
+	   <input type="text" id="stores" name="stores" />
+	</td>
 	</tr>
 </table>
 <br><br>
@@ -73,3 +77,39 @@
         </tbody>
     </table>
 {/if}
+<script>
+    //read stores related with this product
+    var prepopulate = eval('{$stores}');
+    var productId = '{$form.id}';
+</script>
+{literal}
+<script>
+    //tokeninput for store listing
+    $("#stores").tokenInput(prefix + '/ajax.php?op=getStores', {
+        theme : "facebook",
+        zindex : 999999,
+        prePopulate : prepopulate,
+        allowFreeTagging : true,
+        onAdd: function(item) {
+            $.ajax({
+                type: "POST",
+                url: prefix + '/ajax.php?op=addStore',
+                data: { name: item.name, product: productId },
+                success: function(data) {
+        alert('done');
+                }
+            }); 
+        },
+        onDelete: function(item) {
+            $.ajax({
+                type: "POST",
+                url: prefix + '/ajax.php?op=deleteStore',
+                data: { name: item.name, product: productId },
+                success: function(data) {
+        alert('done');
+                }
+            }); 
+        }
+    });
+</script>
+{/literal}

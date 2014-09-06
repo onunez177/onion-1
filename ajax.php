@@ -7,6 +7,18 @@ switch (@$_GET['op']) {
 		$view = new Views\Product();
 		$out = $view->getTypeSubTypesAsJson($_POST['typeId']);
 		break;
+	case 'getStores':
+	    $view = new Views\Store();
+	    $out = $view->defaultView();
+	    break;
+	case 'addStore':
+	    $view = new Views\Store();
+	    $out = $view->addAction($_POST);
+	    break;
+	case 'deleteStore':
+	    $view = new Views\Store();
+	    $out = $view->deleteAction($_POST);
+	    break;
 	default:
 		break;
 }

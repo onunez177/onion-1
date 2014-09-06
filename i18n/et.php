@@ -50,7 +50,7 @@ $lang = array (
 	'latestReviews' => 'Viimased hinnangud',
 	'allReviews' => 'Kõik hinnangud',
 	'picture' => 'Pilt (PNG)',
-		
+	'stores' => 'Poed',
 	
 	/* Product types and subtypes */
 	'beer' => 'Õlu',

@@ -22,6 +22,7 @@
 {/if}
 
 <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/style.css">
+<link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/token-input-facebook.css">
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link href="{$smarty.const.WEBROOT}/lib/design/css/style.css" rel="stylesheet" type="text/css">
   <link href="{$smarty.const.WEBROOT}/lib/design/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
@@ -31,6 +32,7 @@
   {else}
 	<link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/wine.css">
   {/if}
+  <link rel="stylesheet" href="{$smarty.const.WEBROOT}/lib/design/css/token-input-facebook.css">
   <script type="text/javascript">
     //make full server path available to javascript functions
     var prefix = '{$smarty.const.WEBROOT}';
@@ -44,6 +46,7 @@
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.raty-2.5.2.min.js"></script>
   <!-- Country selector from https://github.com/JamieAppleseed/selectToAutocomplete -->
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.browser.js"></script>
+  <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.tokeninput.js"></script>
   <script src="{$smarty.const.WEBROOT}/lib/design/js/jquery.select-to-autocomplete.js"></script>
   {include file="GATracker.tpl"}
   
