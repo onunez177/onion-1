@@ -1,4 +1,4 @@
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
 	$(document).ready(function() {
 		$('#origin').selectToAutocomplete();
 	});
@@ -12,7 +12,7 @@
 <form method="POST" action="{$smarty.const.WEBROOT}/?action=productAdd" enctype="multipart/form-data" id="addProduct">
 	<ul class="contact_ie9">
 	    <li>
-	        <label for="typeId">{$lang['type']}</label>
+	        <label for="types">{$lang['type']}</label>
 	        <select name="typeId" onchange="updateSubTypes(this)" id="types" class="button" style="width:110px">
 			    {foreach from=$types item=type}
 			        <option value="{$type->getId()}">{$lang[$type->getName()]}</option>
@@ -20,7 +20,7 @@
 		    </select>
 	    </li>
 	    <li>
-	        <label for="subTypeId">{$lang['subtype']}</label>
+	        <label for="subtypes">{$lang['subtype']}</label>
 		    <select name="subTypeId" id="subtypes" class="button" style="width:110px">
     		    {foreach from=$typeSubtypes item=subtype}
 		            <option value="{$subtype->getId()}">{$lang[$subtype->getName()]}</option>
@@ -29,23 +29,23 @@
 	    </li>
 	    <li>
             <label for="manufactor">{$lang['manufactor']}</label>
-            <input type="text" name="manufactor" required class="required" >
+            <input type="text" name="manufactor" id="manufactor" required class="required" >
         </li>
         <li>
             <label for="name">{$lang['name']}</label>
-            <input type="text" name="name" required class="required" >
+            <input type="text" name="name" id="name" required class="required" >
         </li>
         <li>
             <label for="year">{$lang['year']}</label>
-            <input type="text" name="year" required class="required" >
+            <input type="text" name="year" id="year" required class="required" >
         </li>
         <li>
             <label for="alc">{$lang['alc']}</label>
-            <input type="text" name="alc" required class="required" >
+            <input type="text" name="alc" id="alc" required class="required" >
         </li>
         <li>
             <label for="origin">{$lang['origin']}</label>
-            <select name="origin" id="origin" autofocus="autofocus" autocorrect="off" autocomplete="off">
+            <select name="origin" id="origin" autofocus="autofocus">
 		      <option value="" selected="selected">{$lang['selectOrigin']}</option>
 		      <option value="Afghanistan" data-alternative-spellings="AF">Afghanistan</option>
 		      <option value="Albania" data-alternative-spellings="AL">Albania</option>
