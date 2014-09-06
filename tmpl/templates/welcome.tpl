@@ -2,7 +2,6 @@
 	<p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/" class="arrow more fright"></a>
 </header>
-{assign var=key value='drinkType'|cat:$smarty.session.type}
 <h1 style="text-transform: uppercase;">{$lang['welcome']}</h1>
 
 <article id="navwelcome" class="detail">
