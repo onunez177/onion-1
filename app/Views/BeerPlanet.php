@@ -57,6 +57,8 @@ abstract class BeerPlanet extends Page {
 				$this->_drinkType = \Enum\DrinkType::Wine;
 				break;
 			default:
+			    //set default session variable 
+			    $_SESSION['type'] = \Enum\DrinkType::Beer;
 				$this->_drinkType = \Enum\DrinkType::Beer;
 				break;
 		}

@@ -92,6 +92,8 @@ abstract class Page {
 				break;
 			default:
 				include 'i18n/en.php';
+				//assign session variables
+				$_SESSION['L'] = \Enum\Language::Eng;
 				break;
 		}
 		$this->_translation = $lang;		
