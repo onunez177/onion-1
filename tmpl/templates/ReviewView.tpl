@@ -15,26 +15,29 @@
 <article class="column4in mright services">
 	<h5>{$lang['color']}</h5>
 	<div class="sepmini"></div>
-	<p>{$form.color}</p>
+	<div><p>{$form.color}</p></div>
 </article>
 <article class="column4in mright services">
 	<h5>{$lang['smell']}</h5>
 	<div class="sepmini"></div>
-	<p>{$form.smell}</p>
+	<div><p>{$form.smell}</p></div>
 </article>
 <article class="column4in mright services">
 	<h5>{$lang['taste']}</h5>
 	<div class="sepmini"></div>
-	<p>{$form.taste}</p>
+	<div><p>{$form.taste}</p></div>
 </article>
 </section>
+<section class="part clearfix" style="clear:both">
 <div class="yoxview" id="thumbnails" style="float:left;">
-    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75px" height="150px" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
+    <a href="{$smarty.const.WEBROOT}/uploads/{$encodedName}"><img src="{$smarty.const.WEBROOT}/uploads/thumb/{$encodedName}" width="75" height="150" alt="{$form.name}" title="{$form.name}" style="padding-right:10px"/></a>
 </div>
-<div style="float:left;width: 800px;padding-left: 10px;"><h5>{$lang['description']}</h3>
-<p>
-    {$form.description}
-</p></div>
+<div class="descriptionSection">
+    <h5>{$lang['description']}</h5>
+    <div class="sepmini"></div>
+    <p>{$form.description}</p>
+</div>
+</section>
 
 <script type="text/javascript">
 var webroot = '{$smarty.const.WEBROOT}/lib/design/images/';
