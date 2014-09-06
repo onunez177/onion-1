@@ -96,7 +96,6 @@
                 url: prefix + '/ajax.php?op=addStore',
                 data: { name: item.name, product: productId },
                 success: function(data) {
-        alert('done');
                 }
             }); 
         },
@@ -106,7 +105,6 @@
                 url: prefix + '/ajax.php?op=deleteStore',
                 data: { name: item.name, product: productId },
                 success: function(data) {
-        alert('done');
                 }
             }); 
         }
