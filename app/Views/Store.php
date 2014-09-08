@@ -58,11 +58,21 @@ class Store extends BeerPlanet {
         $name = strip_tags(addslashes($post['name']));
         $object = new \Entities\Store();
         $object->setName($name);
-        $id = $this->_service->insert($object);
+        $store = $this->_storeExists($object);
+        if ($store instanceof \Entities\Store) {
+            $id = $store->getId();
+        } else {
+            $id = $this->_service->insert($object);
+        }
         $mapping = new \Entities\ProductStore();
         $mapping->setStoreId($id);
         $mapping->setProductId($post['product']);
         $this->_service->insert($mapping);
+    }
+    
+    private function _storeExists($object) {
+        $store = $this->_service->select($object);
+        return $store;
     }
     
     /**
