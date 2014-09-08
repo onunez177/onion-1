@@ -1,3 +1,4 @@
+<section class="part clearfix">
 <header class="title clearfix">
 	<p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/" class="arrow more fright"></a>
@@ -8,3 +9,6 @@
 	<h2>{$lang['aboutSite']}</h2>
 	{$lang['introtext']}
 </article>
+
+</section>
+{include file="ProductFresh.tpl"}
