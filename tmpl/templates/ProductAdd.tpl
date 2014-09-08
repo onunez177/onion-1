@@ -1,3 +1,4 @@
+<section class="part clearfix">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#origin').selectToAutocomplete();
@@ -298,7 +299,7 @@
         </li>
         <li>
             <label for="picture">{$lang['picture']}</label>
-            <input type="file" accept="image/png" id="picture" name="picture"/>
+            <input type="file" accept="image/*" id="picture" name="picture"/>
         </li>
     </ul>
 	<a href="{$smarty.const.WEBROOT}/product/add" class="button">{$lang['cancel']}</a>
@@ -307,3 +308,4 @@
 </form>
 <p class="border-1">&nbsp;</p>
 {include file='ProductList.tpl'}
+</section>

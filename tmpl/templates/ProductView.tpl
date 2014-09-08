@@ -1,3 +1,4 @@
+<section class="part clearfix">
 <header class="title clearfix">
 	<div class="fb-share-button" style="float:left" data-href="{$smarty.const.LIKEURL}/product/details/{$form.id}" data-type="button"></div>
     <a href="{$smarty.const.WEBROOT}/product/list" class="arrow more fright">{$lang['allProducts']}</a>
@@ -6,7 +7,7 @@
 <div class="myH1container">
     <div class="myH1">{$form.name}</div>
 </div>
-<div style="float:right">
+<div class="headerButtonContainer">
     <a href="{$smarty.const.WEBROOT}/review/addUnder/{$form.id}" class="button">{$lang['addReview']}</a>
 </div>
 
@@ -111,3 +112,4 @@
     });
 </script>
 {/literal}
+</section>

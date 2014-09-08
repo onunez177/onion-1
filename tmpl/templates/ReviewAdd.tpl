@@ -1,3 +1,4 @@
+<section class="part clearfix">
 <header class="title clearfix">
     <p class="fleft"></p>
     <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">{$lang['allReviews']}</a> </header>
@@ -89,3 +90,4 @@
 </form>
 <p class="border-1">&nbsp;</p>
 {include file='ReviewList.tpl'}
+</section>

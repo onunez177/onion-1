@@ -1,3 +1,4 @@
+<section class="part clearfix">
 <header class="title clearfix">
 	<div class="fb-share-button" style="float:left" data-href="{$smarty.const.LIKEURL}/review/details/{$form.id}" data-type="button"></div>
     <a href="{$smarty.const.WEBROOT}/review/list" class="arrow more fright">{$lang['allReviews']}</a>
@@ -52,3 +53,4 @@ var score = '{$form.rating}';
     });
 {/literal}
 </script>
+</section>
