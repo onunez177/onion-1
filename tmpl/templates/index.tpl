@@ -84,7 +84,7 @@
   
 </header>
 <div class="main center">
-  <section class="part clearfix">
+  
 	  <!-- This loop shows all messages that were set in view class. If this part is
 	omitted, no messages are shown whether or not they are set -->
 	{if $messages} 
@@ -95,7 +95,6 @@
 	    </div>
 	{/if}
     {$content}
-  </section>
 </div>
 <footer class="center part clearfix">
   <article class="column3 mright ">
