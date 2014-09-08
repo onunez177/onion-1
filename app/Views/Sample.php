@@ -42,6 +42,10 @@ class Sample extends BeerPlanet implements \Interfaces\Presentable {
 	 * @see \Views\Page::defaultView()
 	 */
 	public function defaultView($message = false) {
+	    $product = new \Entities\Product();
+	    $product->setTypeId($this->_drinkType);
+	    $productView = new \Views\Product();
+	    $productView->loadFreshProductsToSmarty($product);
 		$this->_content = $this->_smarty->fetch('welcome.tpl');
 		$this->setMessage($message);
 		$this->display();
