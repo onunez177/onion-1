@@ -78,7 +78,7 @@ abstract class BeerPlanet extends Page {
 		$outname = NOIMAGE;
 		foreach ($allowedExtensions as $ext) {
 		    if (file_exists(IMGUPLOAD . $name . '.' . $ext)) {
-		        $outname .= '.' . $ext;
+		        $outname = $name . '.' . $ext;
 		        error_log('found: ' . IMGUPLOAD . $name . '.' . $ext);
 		        break;
 		    }
