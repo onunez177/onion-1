@@ -25,8 +25,10 @@ class Image {
 		//check whether user uploaded a image or not
 		if (strlen($file["picture"]["name"]) > 0) {
 			//check if uploaded file is PNG
-			if ($file["picture"]["type"] != "image/png") {
-				throw new \Exception('Image can be PNG only!');
+			if ($file["picture"]["type"] != "image/png" 
+		        && $file["picture"]["type"] != "image/jpg"
+                && $file["picture"]["type"] != "image/jpeg") {
+				throw new \Exception('Image can be PNG/JP(E)G only!');
 			}
 			move_uploaded_file($file["picture"]["tmp_name"], APPPATH . 'uploads/'.$name);
 		}
@@ -118,5 +120,22 @@ class Image {
 	
 		imagedestroy($target_image);
 		imagedestroy($source_image);
+	}
+
+	/**
+	 * Mehtod returns file extension from filename. When no extension is found
+	 * Exception is thrown
+	 * 
+	 * @param String $name Filename
+	 * @throws \Exception
+	 * @return String
+	 */
+	public static function getFileExtension($name) {
+	    if(stristr($name, '.')) {
+	       $parts = explode('.', $name);
+	       return strtolower(array_pop($parts));
+	    } else {
+	        throw new \Exception('Filename has no extension!');
+	    }
 	}
 }
