@@ -382,3 +382,8 @@ label.error { color: #D84A38; margin: 10px 0 0 5px; font-weight: normal; font-st
 tr:hover a {
     color:#fff;
 }
+
+.headerButtonContainer {
+	float:right;
+	padding-top: 10px;
+}
