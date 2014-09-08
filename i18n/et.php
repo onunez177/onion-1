@@ -49,7 +49,7 @@ $lang = array (
 	'notInList' => 'Ei leidnud toodet nimekirjast?',
 	'latestReviews' => 'Viimased hinnangud',
 	'allReviews' => 'Kõik hinnangud',
-	'picture' => 'Pilt (PNG)',
+	'picture' => 'Pilt (PNG, JP(E)G)',
 	'stores' => 'Poed',
 	
 	/* Product types and subtypes */

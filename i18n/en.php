@@ -49,7 +49,7 @@ $lang = array (
 	'notInList' => 'Drink not in list?',
 	'latestReviews' => 'Latest Reviews',
 	'allReviews' => 'List of all reviews',
-	'picture' => 'Image (PNG)',
+	'picture' => 'Image (PNG, JP(E)G)',
 	'stores' => 'Stores',
 	
 	/* Product types and subtypes */
